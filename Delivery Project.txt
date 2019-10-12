@@ -1,0 +1,19 @@
+Grubhub lookalike
+Display---
+Restaurant Name will be displayed, along with address and phone number on top
+Restaurant rating as well
+
+Food options to pick from with prices next to them
+Foods will be numbered and in categories such as - Pastas, soups, desserts, appetizers, drinks etc..
+
+Client---
+When customer is picking food options, they will be able to change the quantity of the food they are getting and give special instructions to the delivery driver.
+
+Customer will be able to pick food options and they will be added to "bag" 
+In "bag" each item name and quantity will be displayed, along with price
+At the end of "bag" will be the added tax and final total amount.
+
+Checkout button will be at the end of the "bag" area, when clicking that button the customer will be asked whether they would like to give a tip or not. ---> They will enter or not enter the tip, click continue, be shown their final total with the tip included, then click Confirm or Go Back to complete or not complete the order.
+
+Server----
+The order will be sent to the restaurant side and will be popup via the system and printed via fax.
