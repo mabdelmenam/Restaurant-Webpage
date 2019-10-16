@@ -1,0 +1,31 @@
+Restaurant Project
+Display---
+Restaurant Name will be displayed, along with address and phone number on top
+Restaurant rating as well
+
+Food options to pick from with prices next to them
+Foods will be numbered and in categories such as - Pastas, soups, desserts, appetizers, drinks etc..
+
+Client---
+Customer will be able to sign up to the site, providing their name, phone number, email, a password, and address. 
+
+When logging in, customer name will be displayed in the top right corner of the screen. 
+
+When customer is picking food options, they will be able to change the quantity of the food they are getting and give special instructions to the delivery driver.
+
+Customer will be able to pick food options and they will be added to "bag" 
+In "bag" each item name and quantity will be displayed, along with price
+At the end of "bag" will be the added tax and final total amount.
+
+Checkout button will be at the end of the "bag" area, when clicking that button the customer will be asked whether they would like to give a tip or not. ---> They will enter or not enter the tip, click continue, be shown their final total with the tip included, then click Confirm or Go Back to complete or not complete the order.
+
+Server----
+Server --> will include a database that has the customers data that was included when signing up, password will be hashed
+
+As well as a verification system for the login credentials.
+
+The order will be sent to the restaurant side and will be popup via the system (email notification or restaurants email) and printed via fax.
+
+https://readwrite.com/2013/10/02/github-for-beginners-part-2/
+
+git pull origin master

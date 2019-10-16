@@ -1,24 +1,43 @@
 .about-us {
-  overflow: auto;
-  width: 800px;
-  height: 100%;
+  /*overflow: auto;*/
+  width: 600px;
+  height: 450px;
   background: #d8d6bb;
-  padding: 40px 0;
-  font-family: "Courier New", Courier, monospace;
+  padding: 20px 0;
+  font-family: sans-serif;
   border: 5px solid #4e3f3f;
   border-radius: 35px;
 
   position: relative;
-  left: 600px;
+  left: 750px;
+}
+.about-us h2 {
+  text-align: center;
+}
+.inner-width {
+  max-width: 1000px;
+  overflow: hidden;
+  padding: 0 20px;
+  margin: auto;
 }
 .border {
-  width: 100%;
+  width: 125px;
   height: 3px;
   background: #ca8504;
-  margin: 40px auto;
+  margin: 20px auto;
+}
+.about-row {
+  display: flex;
+  flex-wrap: wrap;
 }
 .columns {
-  float: left;
+  flex: 50%;
+  /*float: left;
   width: 50%;
-  padding: 10px;
+  padding: 10px;*/
+}
+@media screen and (max-width: 700px) {
+  .columns {
+    flex: 100%;
+  }
 }
