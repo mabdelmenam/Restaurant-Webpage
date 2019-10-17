@@ -29,8 +29,11 @@ The order will be sent to the restaurant side and will be popup via the system (
 https://readwrite.com/2013/10/02/github-for-beginners-part-2/
 
 git pull origin master
+<<<<<<< HEAD
 
 Using AJAX to go to a different part of the webpage without refreshing
 http://bcbutler.com/ajax/Ajax_page_load_without_refresh.php
 
 Example Site: http://www.saharacafenj.com/ourmenu.html
+=======
+>>>>>>> c9b949cc7d8a5c6e4b1a4fce48f9b24ca26182b9
