@@ -1,15 +1,16 @@
 .about-us {
   /*overflow: auto;*/
-  width: 600px;
+  margin-top: 30px;
+  width: 700px;
   height: 450px;
-  background: #d8d6bb;
+  background: #ffffff;
   padding: 20px 0;
   font-family: sans-serif;
-  border: 5px solid #4e3f3f;
-  border-radius: 35px;
+  border: 5px solid #000000;
+  border-radius: 5px;
 
   position: relative;
-  left: 750px;
+  left: 570px;
 }
 .about-us h2 {
   text-align: center;
@@ -20,7 +21,7 @@
   padding: 0 20px;
   margin: auto;
 }
-.border {
+.line {
   width: 125px;
   height: 3px;
   background: #ca8504;
@@ -35,6 +36,16 @@
   /*float: left;
   width: 50%;
   padding: 10px;*/
+}
+p {
+  line-height: 27px;
+  font-size: 16px;
+  font-family: "Noticia Text", sans-serif;
+  font-weight: bold;
+}
+#map {
+  height: 400px;
+  width: 600px;
 }
 @media screen and (max-width: 700px) {
   .columns {

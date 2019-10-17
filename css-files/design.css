@@ -1,22 +1,27 @@
 #title {
-  color: black;
+  color: orange;
   font-weight: bold;
-  font-size: 60px;
-  margin-top: 50px;
+  font-size: 35px;
+  margin-top: 20px;
   margin-left: 50px;
   font-family: Papyrus;
 }
+.header {
+  padding: 20px;
+  margin-bottom: 40px;
+  background-color: #9c39df;
+}
 body {
-  background-image: url("Red-White.jpg");
+  background-color: rgb(238, 232, 183);
+  /*background-image: url("stars.png");
   background-repeat: no-repeat;
   background-size: cover;
-  overflow-x: hidden;
+  overflow-x: hidden;*/
 }
 .navbar {
   height: 100%;
-  width: 0;
   position: fixed;
-  left: 0;
+  float: right;
   margin-left: 25px;
 }
 .navbar a {
@@ -27,9 +32,9 @@ body {
   white-space: nowrap;
   padding: 20px 30px;
   text-decoration: none;
-  color: #000;
+  color: rgb(255, 0, 0);
 }
 .navbar a:hover {
-  color: rgb(92, 0, 57);
+  color: rgb(153, 0, 255);
   transition: 0.4s;
 }
