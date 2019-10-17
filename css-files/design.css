@@ -1,0 +1,40 @@
+#title {
+  color: orange;
+  font-weight: bold;
+  font-size: 35px;
+  margin-top: 20px;
+  margin-left: 50px;
+  font-family: Papyrus;
+}
+.header {
+  padding: 20px;
+  margin-bottom: 40px;
+  background-color: #9c39df;
+}
+body {
+  background-color: rgb(238, 232, 183);
+  /*background-image: url("stars.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-x: hidden;*/
+}
+.navbar {
+  height: 100%;
+  position: fixed;
+  float: right;
+  margin-left: 25px;
+}
+.navbar a {
+  display: block;
+  font-size: 25px;
+  font-family: Papyrus;
+  font-weight: bold;
+  white-space: nowrap;
+  padding: 20px 30px;
+  text-decoration: none;
+  color: rgb(255, 0, 0);
+}
+.navbar a:hover {
+  color: rgb(153, 0, 255);
+  transition: 0.4s;
+}

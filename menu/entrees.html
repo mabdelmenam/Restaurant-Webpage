@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>McGrub</title>
+
+    <link rel="stylesheet" href="css-files/design.css" />
+    <link rel="stylesheet" href="css-files/about.css" />
+    <link rel="stylesheet" href="css-files/menu.css" />
+    <script src="menu.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1 id="title">McGrub</h1>
+    </div>
+    <div id="nav" class="navbar">
+      <a href="./about.html">About</a>
+      <a href="./menu.html">Menu</a>
+      <a href="#">Order Online</a>
+    </div>
+
+    <div class="wrapper">
+        <!--menu-nav-->
+        <div class="menu-nav">
+            <a href="#" onclick="loadCategory('category', './entrees.html');return false;">Entrees</a>
+            <a href="#" onclick="loadCategory();return false;">Lunch</a>
+            <a href="#" onclick="loadCategory();return false;">Sandwiches and Pastas</a>
+            <a href="#" onclick="loadCategory();return false;">Desserts</a>
+        </div>
+        <div class="content" style="text-align: right; font-size: 16;">
+            <h2>WORDS</h2>
+            <h4>CHANGED</h4>
+        </div>
+
+    </div>
+  </body>
+</html>
