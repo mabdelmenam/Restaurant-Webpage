@@ -3,6 +3,7 @@
   margin-right: auto;
   margin-left: auto;
 }
+/*navbar-start*/
 .menu-navbar {
   margin-top: 200px;
 }
@@ -26,4 +27,37 @@ div {
   border: 5px solid #9900ff;
   border-radius: 0.7px;
   transition: 0.4s;
+}
+/*navbar-end*/
+/*category-title--start*/
+.content h3 {
+  text-align: center;
+  font-size: 40px;
+  color: black;
+  font-weight: bold;
+  font-family: Papyrus;
+  padding-top: 50px;
+}
+.menu-underline {
+  width: 125px;
+  height: 3px;
+  border-bottom: 2px solid black;
+  margin: 20px auto;
+}
+/*category-title--end*/
+.content {
+  background-image: url("../menu/menu-background.jpg");
+  text-align: center;
+  font-size: 17px;
+  font-family: Georgia, serif;
+} /*mainly formatting the <p> tags, but will generalize*/
+.food-heading {
+  font-size: 22px;
+  font-weight: bold;
+}
+#price-underline {
+  width: 350px;
+  height: 3px;
+  background: #000000;
+  margin: 13px auto;
 }
