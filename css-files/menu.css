@@ -20,6 +20,9 @@
   border-radius: 0.7px;
   padding: 3px;
 }
+.menu-navbar a:active{
+  background-color: #9c39df;
+}
 div {
   display: block;
 }
@@ -30,7 +33,7 @@ div {
 }
 /*navbar-end*/
 /*category-title--start*/
-.content h3 {
+#content h3 {
   text-align: center;
   font-size: 40px;
   color: black;
@@ -45,7 +48,7 @@ div {
   margin: 20px auto;
 }
 /*category-title--end*/
-.content {
+#content {
   background-image: url("../menu/menu-background.jpg");
   text-align: center;
   font-size: 17px;
