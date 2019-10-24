@@ -27,6 +27,10 @@ input[type="text"] {
   margin-bottom: 15px;
   font-family: Rockwell;
   font-size: 15px;
+  outline: none;
+}
+#password {
+  -webkit-text-security: disc;
 }
 hr {
   width: 230px;
@@ -35,7 +39,7 @@ hr {
 }
 /*input boxes end*/
 /*sign up button start*/
-#sign-up-btn {
+.btns {
   color: black;
   font-weight: bold;
   font-size: 19px;
@@ -45,16 +49,16 @@ hr {
   border-radius: 25px;
   padding: 10px;
 }
-#sign-up-btn:hover {
+.btns:hover {
   border: 2.5px solid #4dff03;
   border-radius: 25px;
   transition: 0.4s;
   cursor: pointer;
 }
-#sign-up-btn:active {
+.btns:active {
   background-color: #df4b07;
 }
-#sign-up-btn:focus {
+.btns:focus {
   outline: none;
 }
 span {
