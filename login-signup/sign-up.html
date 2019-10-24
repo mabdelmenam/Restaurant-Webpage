@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="../css-files/design.css" />
     <link rel="stylesheet" href="../css-files/login.css" />
-    <script src="login.js"></script>
+    <script async src="login.js"></script>
   </head>
   <body>
     <div class="header">
@@ -27,10 +27,14 @@
         <div id="login-underline"></div>
         <input type="text" id="user" placeholder="Username" />
         <hr />
-        <div id="input-underline"></div>
         <input type="text" id="password" placeholder="Password" />
         <hr />
-        <input type="text" id="email" placeholder="Email" />
+        <input type="text" id="first-name" placeholder="First Name" />
+        <input type="text" id="last-name" placeholder="Last-Name" />
+        <hr />
+        <input type="email" id="email" placeholder="Email" required />
+        <hr />
+        <input type="text" id="phone-number" placeholder="Phone Number" />
         <hr />
         <input type="text" id="address" placeholder="Address" />
         <hr />
@@ -38,7 +42,9 @@
         <hr />
       </form>
       <span>Remember to fill in all fields.</span>
-      <button onclick="login(id)" class="btns">Sign Up</button>
+      <button onclick="login(id)" class="btns" id="sign-up-btn" disabled>
+        Sign Up
+      </button>
       <!--Login Form End-->
     </div>
   </body>
