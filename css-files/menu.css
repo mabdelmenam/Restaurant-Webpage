@@ -20,7 +20,7 @@
   border-radius: 0.7px;
   padding: 3px;
 }
-.menu-navbar a:active{
+.menu-navbar a:active {
   background-color: #9c39df;
 }
 div {
@@ -54,9 +54,24 @@ div {
   font-size: 17px;
   font-family: Georgia, serif;
 } /*mainly formatting the <p> tags, but will generalize*/
+/* start Styling for <p> tags*/
 .food-heading {
   font-size: 22px;
   font-weight: bold;
+}
+.plus-btn {
+  background-color: #9a0d0d;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  padding: 7px 10px;
+  margin-left: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  display: none;
+}
+.plus-btn:hover {
+  background-color: #572acb;
 }
 #price-underline {
   width: 350px;
@@ -64,3 +79,4 @@ div {
   background: #000000;
   margin: 13px auto;
 }
+/*end*/
