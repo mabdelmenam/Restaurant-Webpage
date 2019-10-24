@@ -5,6 +5,10 @@
   margin-top: 20px;
   margin-left: 50px;
   font-family: Papyrus;
+  width: 150px;
+}
+#title:hover {
+  cursor: pointer;
 }
 .header {
   padding: 20px;
@@ -38,7 +42,7 @@ body {
   color: rgb(153, 0, 255);
   transition: 0.4s;
 }
-#login{
+#login {
   text-align: right;
   font-size: 20px;
   color: black;
@@ -53,15 +57,15 @@ body {
   border-radius: 25px;
   padding: 10px;
 }
-#login:hover{
+#login:hover {
   border: 2.5px solid #4dff03;
   border-radius: 25px;
   transition: 0.4s;
   cursor: pointer;
 }
-#login:active{
+#login:active {
   background-color: #df4b07;
 }
-#login:focus{
+#login:focus {
   outline: none;
 }
