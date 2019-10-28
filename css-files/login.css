@@ -72,3 +72,12 @@ span {
   font-weight: bold;
 }
 /*sign up button end*/
+/*validating info on signup page*/
+.email:valid {
+  border-color: black;
+}
+.email:invalid {
+  border-color: red;
+}
+
+

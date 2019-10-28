@@ -7,6 +7,7 @@ function login(id) {
     window.location.replace("/delivery-project/login-signup/sign-up.html");
   }
 }
+const signupForm = document.getElementById("signup-form");
 const email = document.getElementById("email");
 const signupButton = document.getElementById("sign-up-btn");
 
@@ -23,4 +24,8 @@ email.addEventListener("keyup", function(event) {
   } else {
     signupButton.disabled = true;
   }
+});
+
+signupButton.addEventListener('click', function (event) {
+  signupForm.submit();
 });
