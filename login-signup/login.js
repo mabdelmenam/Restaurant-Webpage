@@ -7,20 +7,3 @@ function login(id) {
     window.location.replace("/delivery-project/login-signup/sign-up.html");
   }
 }
-const email = document.getElementById("email");
-const signupButton = document.getElementById("sign-up-btn");
-
-if (email) {
-  console.log("Yes");
-} else {
-  console.log("No");
-}
-email.addEventListener("keyup", function(event) {
-  isValidEmail = email.checkValidity();
-
-  if (isValidEmail) {
-    signupButton.disabled = false;
-  } else {
-    signupButton.disabled = true;
-  }
-});

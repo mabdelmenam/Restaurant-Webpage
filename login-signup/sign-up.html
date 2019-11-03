@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css-files/design.css" />
     <link rel="stylesheet" href="../css-files/login.css" />
     <script async src="login.js"></script>
+    <script async src="signup.js"></script>
   </head>
   <body>
     <div class="header">
@@ -27,17 +28,23 @@
         <div id="login-underline"></div>
         <input type="text" id="user" placeholder="Username" />
         <hr />
+        <div class="error" id="pass-error"></div>
         <input type="text" id="password" placeholder="Password" />
         <hr />
+        <div class="error" id="Fname-error"></div>
         <input type="text" id="first-name" placeholder="First Name" />
         <input type="text" id="last-name" placeholder="Last-Name" />
         <hr />
+        <div class="error" id="email-error"></div>
         <input type="email" id="email" placeholder="Email" required />
         <hr />
+        <div class="error" id="phone-error"></div>
         <input type="text" id="phone-number" placeholder="Phone Number" />
         <hr />
+        <div class="error" id="address-error"></div>
         <input type="text" id="address" placeholder="Address" />
         <hr />
+        <div class="error" id="zip-error"></div>
         <input type="text" id="zipcode" placeholder="Zip Code" />
         <hr />
       </form>
