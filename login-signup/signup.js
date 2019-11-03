@@ -1,36 +1,55 @@
 const signupButton = document.getElementById("sign-up-btn");
 
-var email = document.getElementById("email");
+var username = document.getElementById("username");
+var password = document.getElementById("password");
 var fname = document.getElementById("first-name");
 var lname = document.getElementById("last-name");
+var email = document.getElementById("email");
 var pnumber = document.getElementById("phone-number");
 var address = document.getElementById("address");
 var zipcode = document.getElementById("zipcode");
-var password = document.getElementById("password");
 
-var email_error = document.getElementById("email-error");
+var user_error = document.getElementById("user-error");
+var pass_error = document.getElementById("pass-error");
 var fname_error = document.getElementById("Fname-error");
+var email_error = document.getElementById("email-error");
 var pnumber_error = document.getElementById("phone-error");
 var address_error = document.getElementById("address-error");
 var zipcode_error = document.getElementById("zip-error");
-var pass_error = document.getElementById("pass-error");
 
-//Email Validation
-email.addEventListener("keyup", function(event) {
-  isValidEmail = email.checkValidity();
-
-  if (isValidEmail) {
-    email_error.innerHTML = " ";
+//Username Validation
+username.addEventListener("keyup", function(event) {
+  userRegex = /^([a-zA-Z0-9_!~]{5,16})$/;
+  if (userRegex.test(username.value)) {
+    user_error.innerHTML = " ";
     signupButton.disabled = false;
-  } else if (email.value == "" || email.value == " ") {
-    email_error.innerHTML = "Please do not leave blank";
+  } else if (username.value == "" || username.value == " ") {
+    user_error.innerHTML = "Please do not leave blank";
     signupButton.disabled = true;
   } else {
-    email_error.innerHTML = "Please enter a correct email.";
+    user_error.innerHTML =
+      "Username must consist of 5-16 characters with no spaces,</br>Can only include characters, '_ ! ~'";
     signupButton.disabled = true;
   }
 });
-
+//Password Validation
+password.addEventListener("keyup", function(event) {
+  passRegex = /^([a-zA-Z0-9@!~$#]{8,21})$/;
+  if (password.value == "password") {
+    pass_error.innerHTML = "Password cannot be ' password ' ";
+    signupButton.disabled = true;
+  } else if (passRegex.test(password.value)) {
+    pass_error.innerHTML = " ";
+    signupButton.disabled = false;
+  } else if (password.value == "" || password.value == " ") {
+    pass_error.innerHTML = "Please do not leave blank";
+    signupButton.disabled = true;
+  } else {
+    pass_error.innerHTML =
+      "Password must consist of 8-21 characters,</br>Can only include characters, '@ ! ~ $ #";
+    signupButton.disabled = true;
+  }
+});
 //First Name Validation
 fname.addEventListener("keyup", function(event) {
   var nameRegex = /^[a-zA-Z]+$/;
@@ -62,7 +81,21 @@ lname.addEventListener("keyup", function(event) {
     signupButton.disabled = true;
   }
 });
+//Email Validation
+email.addEventListener("keyup", function(event) {
+  isValidEmail = email.checkValidity();
 
+  if (isValidEmail) {
+    email_error.innerHTML = " ";
+    signupButton.disabled = false;
+  } else if (email.value == "" || email.value == " ") {
+    email_error.innerHTML = "Please do not leave blank";
+    signupButton.disabled = true;
+  } else {
+    email_error.innerHTML = "Please enter a correct email.";
+    signupButton.disabled = true;
+  }
+});
 //Phone Number Validation
 pnumber.addEventListener("keyup", function(event) {
   var phoneRegex = /^[\d]{3}[\s-]?[\d]{3}[\s-]?[\d]{4}$/;
@@ -105,25 +138,6 @@ zipcode.addEventListener("keyup", function(event) {
   } else {
     zipcode_error.innerHTML =
       "Please follow one or the other format: </br>12345 ,</br>12345-6789";
-    signupButton.disabled = true;
-  }
-});
-
-//Password Validation
-password.addEventListener("keyup", function(event) {
-  passRegex = /^([a-zA-Z0-9@!~$#]{8,15})$/;
-  if (password.value == "password") {
-    pass_error.innerHTML = "Password cannot be ' password ' ";
-    signupButton.disabled = true;
-  } else if (passRegex.test(password.value)) {
-    pass_error.innerHTML = " ";
-    signupButton.disabled = false;
-  } else if (password.value == "" || password.value == " ") {
-    pass_error.innerHTML = "Please do not leave blank";
-    signupButton.disabled = true;
-  } else {
-    pass_error.innerHTML =
-      "Password must consist of 8-15 characters,</br>Can only include characters, '@ ! ~ $ #";
     signupButton.disabled = true;
   }
 });
