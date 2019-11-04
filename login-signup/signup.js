@@ -141,3 +141,33 @@ zipcode.addEventListener("keyup", function(event) {
     signupButton.disabled = true;
   }
 });
+
+function ajaxSignup(){
+  var info = {
+    user: username,
+    password: password,
+    fname: fname,
+    lname: lname,
+    email: email,
+    phone_num: pnumber,
+    home_address: address,
+    zipcode: zipcode
+  };
+  
+  const requestData = `username=${info.user.value}&password=${info.password.value}
+                      &first_name=${info.fname.value}&last_name=${info.lname.value}&email=${info.email.value}
+                      &phone_num=${info.phone_num.value}&home_address=${info.home_address.value}&zipcode=${info.zipcode.value}`;
+  
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200){
+      console.log("worked");
+    }
+  };
+
+  xhttp.open("POST", file, true);
+  xhttp.send();
+
+  console.log(requestData);
+}
