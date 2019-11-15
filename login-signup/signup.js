@@ -142,7 +142,9 @@ zipcode.addEventListener("keyup", function(event) {
   }
 });
 
-function ajaxSignup(){
+function ajaxSignup(id) {
+  var file = "/prac_proj/python_wsgi/prac_wsgi";
+
   var info = {
     user: username,
     password: password,
@@ -153,21 +155,29 @@ function ajaxSignup(){
     home_address: address,
     zipcode: zipcode
   };
-  
+
   const requestData = `username=${info.user.value}&password=${info.password.value}
                       &first_name=${info.fname.value}&last_name=${info.lname.value}&email=${info.email.value}
                       &phone_num=${info.phone_num.value}&home_address=${info.home_address.value}&zipcode=${info.zipcode.value}`;
-  
+
+  var finalData = JSON.stringify(requestData);
+
+  if (finalData) {
+    console.log("works");
+  } else {
+    ("not works");
+  }
   var xhttp = new XMLHttpRequest();
 
-  xhttp.onreadystatechange = function(){
-    if(this.readyState == 4 && this.status == 200){
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
       console.log("worked");
     }
   };
 
   xhttp.open("POST", file, true);
-  xhttp.send();
+  xhttp.setRequestHeader("Content-Type", "application/json");
+  xhttp.send(finalData);
 
   console.log(requestData);
 }
