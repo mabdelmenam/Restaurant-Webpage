@@ -143,7 +143,7 @@ zipcode.addEventListener("keyup", function(event) {
 });
 
 function ajaxSignup(id) {
-  var file = "/prac_proj/python_wsgi/prac_wsgi";
+  var file = "http://localhost:8000/json_test";
 
   var info = {
     user: username,
@@ -162,20 +162,19 @@ function ajaxSignup(id) {
 
   var finalData = JSON.stringify(requestData);
 
-  if (finalData) {
-    console.log("works");
-  } else {
-    ("not works");
-  }
   var xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log("worked");
+      console.log(this.responseText);
+    } else {
+      console.log("Status: \n", this.status, "FALSE: ", this.responseText);
     }
   };
 
   xhttp.open("POST", file, true);
+  xhttp.setRequestHeader("Access-Control-Allow-Credentials", "true");
+  xhttp.withCredentials = true;
   xhttp.setRequestHeader("Content-Type", "application/json");
   xhttp.send(finalData);
 
