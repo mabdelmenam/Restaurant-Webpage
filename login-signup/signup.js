@@ -146,21 +146,19 @@ function ajaxSignup(id) {
   var file = "http://localhost:8000/json_test";
 
   var info = {
-    user: username,
-    password: password,
-    fname: fname,
-    lname: lname,
-    email: email,
-    phone_num: pnumber,
-    home_address: address,
-    zipcode: zipcode
+    user: username.value,
+    password: password.value,
+    fname: fname.value,
+    lname: lname.value,
+    email: email.value,
+    phone_num: pnumber.value,
+    home_address: address.value,
+    zipcode: zipcode.value
   };
 
-  const requestData = `username=${info.user.value}&password=${info.password.value}
-                      &first_name=${info.fname.value}&last_name=${info.lname.value}&email=${info.email.value}
-                      &phone_num=${info.phone_num.value}&home_address=${info.home_address.value}&zipcode=${info.zipcode.value}`;
+  //const requestData = `username=${info.user.value}&password=${info.password.value}&first_name=${info.fname.value}&last_name=${info.lname.value}&email=${info.email.value}&phone_num=${info.phone_num.value}&home_address=${info.home_address.value}&zipcode=${info.zipcode.value}`;
 
-  var finalData = JSON.stringify(requestData);
+  var finalData = JSON.stringify(info);
 
   var xhttp = new XMLHttpRequest();
 
@@ -168,15 +166,19 @@ function ajaxSignup(id) {
     if (this.readyState == 4 && this.status == 200) {
       console.log(this.responseText);
     } else {
-      console.log("Status: \n", this.status, "FALSE: ", this.responseText);
+      console.log(
+        "Status: ",
+        this.status,
+        "\nFALSE: ",
+        this.responseText,
+        "\n"
+      );
     }
   };
 
   xhttp.open("POST", file, true);
-  xhttp.setRequestHeader("Access-Control-Allow-Credentials", "true");
-  xhttp.withCredentials = true;
   xhttp.setRequestHeader("Content-Type", "application/json");
   xhttp.send(finalData);
 
-  console.log(requestData);
+  //console.log(finalData);
 }

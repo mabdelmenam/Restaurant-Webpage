@@ -1,15 +1,15 @@
 from flask import Flask, request
 from flask_cors import CORS
+import json
 
 app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/json_test', methods=['GET', 'POST'])
+@app.route('/json_test', methods=['POST'])
 def json_test():
-    req_data = request.args.get('username')
-    #username = req_data['username']
-    return '<h1>POST Data is:   {}</h1>'.format(req_data)
+    req_data = request.get_json()
+    return '<h1>POST Data is:   {}</h1>'.format(req_data['user'])
 
 
 @app.route('/')
