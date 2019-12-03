@@ -142,7 +142,7 @@ zipcode.addEventListener("keyup", function(event) {
   }
 });
 
-function ajaxSignup(id) {
+function ajaxSignup() {
   var file = "http://localhost:8000/json_test";
 
   var info = {
