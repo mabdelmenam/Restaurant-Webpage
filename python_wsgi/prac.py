@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_cors import CORS
 from flask_mysqldb import MySQL
+from passlib.hash import pbkdf2_sha256
 import json
 import yaml
 
@@ -24,6 +25,7 @@ def json_test():
         # Text in between brackets is the key from json
         username = req_data['user']
         password = req_data['password']
+        hashed_pswd = pbkdf2_sha256.hash(password)
         fname = req_data['fname']
         lname = req_data['lname']
         email = req_data['email']
@@ -32,7 +34,7 @@ def json_test():
         zipcode = req_data['zipcode']
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO users(username, pass, firstName, lastName, email, pnumber, home_address, zipcode) VALUES(%s, %s, %s, %s, %s, %s, %s, %s)",
-                    (username, password, fname, lname, email, phone_num, home_address, zipcode))
+                    (username, hashed_pswd, fname, lname, email, phone_num, home_address, zipcode))
         mysql.connection.commit()
         cur.close()
         return '<h1>Data Stored</h1>'
