@@ -156,15 +156,20 @@ function ajaxSignup(id) {
     zipcode: zipcode.value
   };
 
-  //const requestData = `username=${info.user.value}&password=${info.password.value}&first_name=${info.fname.value}&last_name=${info.lname.value}&email=${info.email.value}&phone_num=${info.phone_num.value}&home_address=${info.home_address.value}&zipcode=${info.zipcode.value}`;
-
   var finalData = JSON.stringify(info);
 
   var xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText);
+      // getting Unexpected token error because of the response text coming from the <h1>Data Stored</h1>, it is not a json so
+      //parsing that text will lead to this error, due to trying to parse something that is not Json and is just a string
+      var userValidity = JSON.parse(this.responseText);
+      console.log("JSON: ", this.responseText, "\n", userValidity);
+      if (userValidity.valid == 0) {
+        user_error.innerHTML = "Username already exists.";
+        signupButton.disabled = true;
+      }
     } else {
       console.log(
         "Status: ",
