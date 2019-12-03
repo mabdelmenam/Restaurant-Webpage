@@ -29,7 +29,6 @@ def json_test():
         valid = {}
         # Text in between brackets is the key from json
         username = req_data['user']
-
         user_Validate = cur.execute(
             "SELECT * FROM users where username =(%s)", [username])
 
@@ -39,6 +38,7 @@ def json_test():
 
         password = req_data['password']
         hashed_pswd = pbkdf2_sha256.hash(password)
+
         fname = req_data['fname']
         lname = req_data['lname']
         email = req_data['email']

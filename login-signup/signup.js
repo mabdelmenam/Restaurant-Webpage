@@ -169,6 +169,9 @@ function ajaxSignup(id) {
       if (userValidity.valid == 0) {
         user_error.innerHTML = "Username already exists.";
         signupButton.disabled = true;
+      } else if (userValidity.valid == 1) {
+        window.location =
+          "http://localhost/delivery-project/login-signup/loginPage.html";
       }
     } else {
       console.log(
