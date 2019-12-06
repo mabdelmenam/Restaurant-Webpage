@@ -4,10 +4,10 @@ CREATE DATABASE userData;
 
 USE userData
 
-CREATE TABLE userData
+CREATE TABLE users
 (
     username VARCHAR(16),
-    pass VARCHAR(21),
+    pass CHAR(60),
     firstName VARCHAR(25),
     lastName VARCHAR(25),
     email VARCHAR(320),
