@@ -4,11 +4,11 @@ var password = document.getElementById("password");
 var user_error = document.getElementById("user-login-error");
 var password_error = document.getElementById("pass-login-error");
 
-username.addEventListener("keyup", function(event) {
+/*username.addEventListener("keyup", function(event) {
   // Use both these functions after response text
 });
 
-password.addEventListener("keyup", function(event) {});
+password.addEventListener("keyup", function(event) {});*/
 
 function ajaxLogin() {
   //function start
