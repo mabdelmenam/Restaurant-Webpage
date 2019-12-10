@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>McGrub</title>
 
-    <link rel="stylesheet" href="../css-files/design.css" />
-    <link rel="stylesheet" href="../css-files/login.css" />
-    <script async src="login.js"></script>
-    <script async src="signup.js"></script>
-  </head>
-  <body>
-    <div class="header">
-      <h1 id="title" onclick="login(id)">McGrub</h1>
-      <button id="login" onclick="login(id)">Login</button>
-    </div>
-    <div id="nav" class="navbar">
-      <a href="/delivery-project/about.html">About</a>
-      <a href="/delivery-project/menu/menu.html">Menu</a>
-      <a href="#">Order Online</a>
-    </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>McGrub</title>
 
-    <div class="wrapper">
-      <!--Login Form Start-->
-      <form class="login-form" id="signup-form">
-        <h3>Sign Up</h3>
-        <div id="login-underline"></div>
-        <div class="error" id="user-error"></div>
-        <input type="text" id="username" placeholder="Username" required />
-        <hr />
-        <div class="error" id="pass-error"></div>
-        <input type="text" id="password" placeholder="Password" />
-        <hr />
-        <div class="error" id="Fname-error"></div>
-        <input type="text" id="first-name" placeholder="First Name" />
-        <input type="text" id="last-name" placeholder="Last-Name" />
-        <hr />
-        <div class="error" id="email-error"></div>
-        <input type="email" id="email" placeholder="Email" required />
-        <hr />
-        <div class="error" id="phone-error"></div>
-        <input type="text" id="phone-number" placeholder="Phone Number" />
-        <hr />
-        <div class="error" id="address-error"></div>
-        <input type="text" id="address" placeholder="Address" />
-        <hr />
-        <div class="error" id="zip-error"></div>
-        <input type="text" id="zipcode" placeholder="Zip Code" />
-        <hr />
-      </form>
-      <span>Remember to fill in all fields.</span>
-      <button onclick="ajaxSignup()" class="btns" id="sign-up-btn" disabled>
-        Sign Up
-      </button>
-      <!--Login Form End-->
-    </div>
-  </body>
+  <link rel="stylesheet" href="../css-files/design.css" />
+  <link rel="stylesheet" href="../css-files/login.css" />
+  <script async src="login.js"></script>
+  <script async src="signup.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <h1 id="title" onclick="login(id)">McGrub</h1>
+    <button id="login" onclick="login(id)">Login</button>
+  </div>
+  <div id="nav" class="navbar">
+    <a href="/delivery-project/about.html">About</a>
+    <a href="/delivery-project/menu/menu.html">Menu</a>
+    <a href="#">Order Online</a>
+  </div>
+
+  <div class="wrapper">
+    <!--Login Form Start-->
+    <form class="login-form" id="signup-form">
+      <h3>Sign Up</h3>
+      <div id="login-underline"></div>
+      <div class="error" id="user-error"></div>
+      <input type="text" id="username" placeholder="Username" required />
+      <hr />
+      <div class="error" id="pass-error"></div>
+      <input type="text" id="password" placeholder="Password" />
+      <hr />
+      <div class="error" id="Fname-error"></div>
+      <input type="text" id="first-name" placeholder="First Name" />
+      <input type="text" id="last-name" placeholder="Last-Name" />
+      <hr />
+      <div class="error" id="email-error"></div>
+      <input type="email" id="email" placeholder="Email" required />
+      <hr />
+      <div class="error" id="phone-error"></div>
+      <input type="text" id="phone-number" placeholder="Phone Number" />
+      <hr />
+      <div class="error" id="address-error"></div>
+      <input type="text" id="address" placeholder="Address" />
+      <hr />
+      <div class="error" id="zip-error"></div>
+      <input type="text" id="zipcode" placeholder="Zip Code" />
+      <hr />
+    </form>
+    <span>Remember to fill in all fields.</span>
+    <button onclick="ajaxSignup()" class="btns" id="sign-up-btn" disabled>
+      Sign Up
+    </button>
+    <!--Login Form End-->
+  </div>
+</body>
+
 </html>

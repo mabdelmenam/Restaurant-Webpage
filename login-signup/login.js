@@ -12,24 +12,26 @@ password.addEventListener("keyup", function(event) {});*/
 
 function ajaxLogin() {
   //function start
-  var file = "";
+  var file = "http://localhost:8000/login_validate";
 
   var info = {
     user: username.value,
     password: password.value
   };
+  console.log("USERNAME: ", info.user, "\nPASSWORD: ", info.password);
 
   var finalData = JSON.stringify(info);
 
   var xhttp = new XMLHttpRequest();
 
-  xhttp.onreadystatechange = function() {
+  xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.readyState == 200) {
       var redirectLink = "http://localhost/delivery-project/menu/menu.html";
       console.log(this.responseText);
     }
   };
   xhttp.open("POST", file, true);
+  xhttp.setRequestHeader("Content-Type", "application/json");
   xhttp.send(finalData);
 } //function end
 
