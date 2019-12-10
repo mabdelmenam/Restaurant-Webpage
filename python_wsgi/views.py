@@ -45,29 +45,31 @@ def json_test():
 
 @app.route('/login_validate', methods=['GET', 'POST'])
 def login_validate():
+    isvalid = {}
     try:
         if request.method == 'POST':
             req_data = request.get_json()
             cur = my_mysql.connection.cursor()
-            valid = {}
 
             username = req_data['user']
             password = req_data['password']
-            print('Entered password: ', username, file=sys.stderr)
-            print('Entered password: ', password, file=sys.stderr)
 
             user_validate = cur.execute(
                 "SELECT * FROM users WHERE username =(%s)", [username])#Checking if username inputted is correct
-            
-            if user_validate == 0:
-                print('USERNAME DOESNT EXIT', user_validate, file=sys.stderr)
 
             hashed_pswd = cur.fetchone()[1]
             password_validate = pbkdf2_sha256.verify(password, hashed_pswd)
 
+            if password_validate != True:
+                isvalid['valid'] = 0
+                return jsonify(isvalid)
+
             print('USER VALIDATION', user_validate, file=sys.stderr)
             print('PASSWORD VALIDATION: ', password_validate, file=sys.stderr)
-            return '<h1>POASSS</h1>'
+            isvalid['valid'] = 1
+            return jsonify(isvalid)
     
     except Exception as e:
+        isvalid['valid'] = 0
+        return jsonify(isvalid)
         

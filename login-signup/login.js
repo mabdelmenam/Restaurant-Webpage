@@ -1,8 +1,8 @@
 var username = document.getElementById("user");
 var password = document.getElementById("password");
 
-var user_error = document.getElementById("user-login-error");
-var password_error = document.getElementById("pass-login-error");
+var login_error = document.getElementById("login-error");
+//var password_error = document.getElementById("pass-login-error");
 
 /*username.addEventListener("keyup", function(event) {
   // Use both these functions after response text
@@ -18,16 +18,26 @@ function ajaxLogin() {
     user: username.value,
     password: password.value
   };
-  console.log("USERNAME: ", info.user, "\nPASSWORD: ", info.password);
 
   var finalData = JSON.stringify(info);
 
   var xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.readyState == 200) {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log("RESPONSE TEXT == ", this.responseText);
       var redirectLink = "http://localhost/delivery-project/menu/menu.html";
-      console.log(this.responseText);
+      var loginValidity = JSON.parse(this.responseText);
+
+      if (loginValidity.valid == 0) {
+        login_error.innerHTML = "Invalid Credentials, try again.";
+        setTimeout(function () {
+          login_error.innerHTML = "";
+        }, 3500);
+      }
+      else {
+        login_error.innerHTML = "";
+      }
     }
   };
   xhttp.open("POST", file, true);
