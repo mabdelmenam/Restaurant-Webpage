@@ -2,13 +2,6 @@ var username = document.getElementById("user");
 var password = document.getElementById("password");
 
 var login_error = document.getElementById("login-error");
-//var password_error = document.getElementById("pass-login-error");
-
-/*username.addEventListener("keyup", function(event) {
-  // Use both these functions after response text
-});
-
-password.addEventListener("keyup", function(event) {});*/
 
 function ajaxLogin() {
   //function start
@@ -36,7 +29,8 @@ function ajaxLogin() {
         }, 3500);
       }
       else {
-        login_error.innerHTML = "";
+        window.location = redirectLink;
+
       }
     }
   };

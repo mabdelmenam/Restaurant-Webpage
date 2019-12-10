@@ -68,7 +68,6 @@ div {
   margin-left: 10px;
   font-size: 17px;
   cursor: pointer;
-  display: none;
 }
 .plus-btn:hover {
   background-color: #572acb;

@@ -62,14 +62,30 @@ def login_validate():
 
             if password_validate != True:
                 isvalid['valid'] = 0
+                json_edits(isvalid)
                 return jsonify(isvalid)
 
-            print('USER VALIDATION', user_validate, file=sys.stderr)
-            print('PASSWORD VALIDATION: ', password_validate, file=sys.stderr)
+            #gc.collect()
+
             isvalid['valid'] = 1
+            json_edits(isvalid)
+
             return jsonify(isvalid)
     
     except Exception as e:
         isvalid['valid'] = 0
+
+        json_edits(isvalid)
+
         return jsonify(isvalid)
+
+
+def json_edits(isvalid): #write isvalid to json file to use as a signal for plus button menu
+        with open('data.json', 'w') as f:
+            f.write(json.dumps({"valid": 3}))
+        with open('data.json', 'r') as f:
+            json_data = json.load(f)
+            json_data = isvalid
+        with open('data.json', 'w') as f:
+            f.write(json.dumps(json_data))
         
