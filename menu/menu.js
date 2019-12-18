@@ -11,15 +11,23 @@ function loadCategory(currentDiv, file) {
   //console.log(xhttp.send());
   xhttp.send();
 }
-function plusButton() {
-  /*var content = document.getElementById('content');
-  var paragraphs = document.getElementsByTagName('p').content;
-  var plusBtn = document.getElementsByClassName("plus-btn");*/
-
+window.onload = function plusButton() {
   /**
    * if valid is 1 in json, then run this function
    */
+  //   <button class="plus-btn"><i class="fa fa-plus"></i></button>
+  var paragraphs = document.querySelectorAll("[id='food']");
+ 
+  for(var i = 0; i< paragraphs.length; i++){
+    console.log(paragraphs[i]);
+    var buttonTag = document.createElement('button');
+    buttonTag.className = 'plus-btn';
 
-  var paragraphs = document.querySelector('.content p').style.color = 'red';
-  console.log(paragraphs);
+    var iTag = document.createElement('i');
+    iTag.className = 'fa fa-plus';
+
+    buttonTag.appendChild(iTag);
+
+    paragraphs[i].insertBefore(buttonTag, paragraphs[i].childNodes[2]);
+  }
 }
