@@ -63,7 +63,7 @@ def login_validate():
 
             if password_validate != True:#Correct username, wrong password
                 isvalid['valid'] = 0
-                json_edits(isvalid)
+                #json_edits(isvalid)
                 return jsonify(isvalid)
             
             session['user'] = username
@@ -73,6 +73,13 @@ def login_validate():
             #json_edits(isvalid)
 
             return jsonify(isvalid)
+        
+        elif request.method == 'GET':
+            print(session.get('user'), file=sys.stderr)
+            if session.get('user') == True:
+                isvalid['valid'] = 1
+                return jsonify(isvalid)
+            return 'YO'
     
     except Exception as e: #Username doesn't exist
         isvalid['valid'] = 0
@@ -91,4 +98,12 @@ def login_validate():
             json_data = isvalid
         with open('data.json', 'w') as f:
             f.write(json.dumps(json_data))'''
+
+@app.route('/check_session', methods=['GET'])
+def check_session():
+    print(session.get('user'), file=sys.stderr)
+    return 'LOL'
+    #if session with 'user' is active then send the response back to menu.js
+    #
+
         

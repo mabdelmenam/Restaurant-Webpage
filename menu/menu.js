@@ -12,10 +12,25 @@ function loadCategory(currentDiv, file) {
   xhttp.send();
 }
 window.onload = function plusButton() {
+  //create condition here to run, based on true or false of user logged in or not
+  //if user is logged in then continue on with the script and create the buttons,
+  // if not then do nothing
   /**
    * if valid is 1 in json, then run this function
    */
   //   <button class="plus-btn"><i class="fa fa-plus"></i></button>
+  var file = "http://localhost:8000/check_session";
+
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+    }
+  };
+  xhttp.open("GET", file, true);
+  xhttp.send(null);
+
   var paragraphs = document.querySelectorAll("[id='food']");
  
   for(var i = 0; i< paragraphs.length; i++){
