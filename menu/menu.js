@@ -32,8 +32,8 @@ window.onload = function plusButton() {
   xhttp.send(null);
 
   var paragraphs = document.querySelectorAll("[id='food']");
- 
-  for(var i = 0; i< paragraphs.length; i++){
+
+  for (var i = 0; i < paragraphs.length; i++) {
     console.log(paragraphs[i]);
     var buttonTag = document.createElement('button');
     buttonTag.className = 'plus-btn';

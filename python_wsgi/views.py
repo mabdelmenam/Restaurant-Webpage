@@ -1,6 +1,6 @@
 from main_app import app, my_mysql
 
-from flask import Flask, request, jsonify, session
+from flask import Flask, request, jsonify, session, redirect, url_for
 from passlib.hash import pbkdf2_sha256
 import json
 
@@ -8,7 +8,7 @@ import sys
 
 @app.route('/') #MAIN PAGE
 def index():
-    session['user'] = "Joey"
+    session['username'] = "Joey"
     return "yo"
 
 @app.route('/json_test', methods=['GET', 'POST']) #DATABASE STORAGE ROUTE
@@ -63,45 +63,25 @@ def login_validate():
 
             if password_validate != True:#Correct username, wrong password
                 isvalid['valid'] = 0
-                #json_edits(isvalid)
                 return jsonify(isvalid)
-            
-            session['user'] = username
-            #print("session is: ", session['user'], file=sys.stderr)
 
             isvalid['valid'] = 1 #Both are correct
-            #json_edits(isvalid)
+            session['username'] = username
 
+            
             return jsonify(isvalid)
-        
-        elif request.method == 'GET':
-            print(session.get('user'), file=sys.stderr)
-            if session.get('user') == True:
-                isvalid['valid'] = 1
-                return jsonify(isvalid)
-            return 'YO'
     
     except Exception as e: #Username doesn't exist
         isvalid['valid'] = 0
-
-        #json_edits(isvalid)
-
         return jsonify(isvalid)
+    return '<h1>Hello</h1>'
 
-
-
-'''def json_edits(isvalid): #write isvalid to json file to use as a signal for plus button menu
-        with open('data.json', 'w') as f:
-            f.write(json.dumps({"valid": 3}))
-        with open('data.json', 'r') as f:
-            json_data = json.load(f)
-            json_data = isvalid
-        with open('data.json', 'w') as f:
-            f.write(json.dumps(json_data))'''
-
-@app.route('/check_session', methods=['GET'])
+@app.route('/check_session', methods=['GET', 'POST'])
 def check_session():
-    print(session.get('user'), file=sys.stderr)
+    if session.get('username') is not None:
+        username = session['username']
+        print(session.get('username'), file=sys.stderr)
+        return f"<h1>{username}</h1>"
     return 'LOL'
     #if session with 'user' is active then send the response back to menu.js
     #
