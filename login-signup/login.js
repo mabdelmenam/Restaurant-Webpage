@@ -36,6 +36,7 @@ function ajaxLogin() {
   };
   xhttp.open("POST", file, true);
   xhttp.setRequestHeader("Content-Type", "application/json");
+  xhttp.withCredentials = true;
   xhttp.send(finalData);
 } //function end
 

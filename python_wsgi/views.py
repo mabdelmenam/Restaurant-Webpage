@@ -76,14 +76,34 @@ def login_validate():
         return jsonify(isvalid)
     return '<h1>Hello</h1>'
 
-@app.route('/check_session', methods=['GET', 'POST'])
+@app.route('/check_session', methods=['GET'])
 def check_session():
-    if session.get('username') is not None:
-        username = session['username']
+    isvalid = {}
+    if session.get('username') is None:
         print(session.get('username'), file=sys.stderr)
-        return f"<h1>{username}</h1>"
-    return 'LOL'
+        isvalid['active'] = 0
+        return jsonify(isvalid)
+
+    print(session.get('username'), file=sys.stderr)
+    isvalid['active'] = 1
+    username = session['username']
+
+    return jsonify(isvalid)
+    '''try:
+        if session.get('username') is None:
+            print(session.get('username'), file=sys.stderr)
+            isvalid['active'] = 0
+            return jsonify(isvalid)
+
+        print(session.get('username'), file=sys.stderr)
+        isvalid['active'] = 1
+        username = session['username']
+        return jsonify(isvalid)
+
+    except Exception as e:
+        isvalid['active'] = 0
+        return jsonify(isvalid)'''
     #if session with 'user' is active then send the response back to menu.js
     #
 
-        
+#return f"<h1>{username}</h1>"

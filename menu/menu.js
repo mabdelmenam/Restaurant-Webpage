@@ -11,7 +11,7 @@ function loadCategory(currentDiv, file) {
   //console.log(xhttp.send());
   xhttp.send();
 }
-window.onload = function plusButton() {
+function plusButton() {
   //create condition here to run, based on true or false of user logged in or not
   //if user is logged in then continue on with the script and create the buttons,
   // if not then do nothing
@@ -25,7 +25,11 @@ window.onload = function plusButton() {
 
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText);
+      console.log('MENU RESPONSE TEXT: ', this.responseText);
+      var session_active = JSON.parse(this.responseText);
+      if (session_active.active == 1) {
+        console.log("ITS 1");
+      }
     }
   };
   xhttp.open("GET", file, true);
@@ -46,3 +50,5 @@ window.onload = function plusButton() {
     paragraphs[i].insertBefore(buttonTag, paragraphs[i].childNodes[2]);
   }
 }
+
+window.onload = setTimeout(plusButton, 2000);

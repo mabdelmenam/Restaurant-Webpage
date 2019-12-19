@@ -13,8 +13,7 @@ app.config.from_pyfile('config.py')
 my_mysql = MySQL(app)
 
 from views import *
-
-CORS(app)
+CORS(app, supports_credentials=True)
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
