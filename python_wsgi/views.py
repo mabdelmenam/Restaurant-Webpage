@@ -80,7 +80,6 @@ def login_validate():
 def check_session():
     isvalid = {}
     if session.get('username') is None:
-        print(session.get('username'), file=sys.stderr)
         isvalid['active'] = 0
         return jsonify(isvalid)
 
@@ -89,21 +88,7 @@ def check_session():
     username = session['username']
 
     return jsonify(isvalid)
-    '''try:
-        if session.get('username') is None:
-            print(session.get('username'), file=sys.stderr)
-            isvalid['active'] = 0
-            return jsonify(isvalid)
 
-        print(session.get('username'), file=sys.stderr)
-        isvalid['active'] = 1
-        username = session['username']
-        return jsonify(isvalid)
-
-    except Exception as e:
-        isvalid['active'] = 0
-        return jsonify(isvalid)'''
-    #if session with 'user' is active then send the response back to menu.js
-    #
+@app.route('/drop_session', methods=['POST'])
 
 #return f"<h1>{username}</h1>"
