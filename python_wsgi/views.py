@@ -1,6 +1,6 @@
 from main_app import app, my_mysql
 
-from flask import Flask, request, jsonify, session, redirect, url_for
+from flask import Flask, request, jsonify, session, redirect, url_for, render_template
 from passlib.hash import pbkdf2_sha256
 import json
 
@@ -66,6 +66,7 @@ def login_validate():
                 return jsonify(isvalid)
 
             isvalid['valid'] = 1 #Both are correct
+            session['logged_in'] = True
             session['username'] = username
 
             
@@ -89,6 +90,10 @@ def check_session():
 
     return jsonify(isvalid)
 
-@app.route('/drop_session', methods=['POST'])
+@app.route('/drop_session')
+def drop_session():
+    session.clear()
+    return render_template('loginPage.html')
+
 
 #return f"<h1>{username}</h1>"
