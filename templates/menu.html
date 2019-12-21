@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>McGrub</title>
+
+  <link rel="stylesheet" href="http://localhost/delivery-project/static/css/design.css" />
+  <link rel="stylesheet" href="http://localhost/delivery-project/static/css/menu.css" />
+
+
+  <script async src="http://localhost/delivery-project/static/js/menu.js"></script>
+  <script src="https://kit.fontawesome.com/dbb9f1c4b3.js"></script>
+  <script async src="http://localhost/delivery-project/static/js/login.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <h1 id="title" onclick="login(id)">McGrub</h1>
+    <button id="login" onclick="login(id)">Login</button>
+  </div>
+  <div id="nav" class="navbar" style="margin-top: 35px;">
+    <a href="http://localhost/delivery-project/templates/about.html">About</a>
+    <a href="http://localhost/delivery-project/templates/menu.html">Menu</a>
+    <a href="#">Order Online</a>
+  </div>
+
+  <div class="wrapper">
+    <!--menu-nav-->
+    <div class="menu-navbar">
+      <a href="#" style="margin-left:80px;" onclick="loadCategory('content', './entrees.html');return false;">Entrees</a>
+      <a href="#" onclick="loadCategory('content', './lunch.html');return false;">Lunch</a>
+      <a href="#" onclick="loadCategory('content', 'swich-pasta.html');return false;">Sandwiches and Pastas</a>
+      <a href="#" onclick="loadCategory('content', './desserts.html');return false;">Desserts</a>
+    </div>
+    <div id="content">
+      <h3><span class="menu-underline">Entrees</span></h3>
+
+      <p id="food">
+        <span class="food-heading">Egg Soup</span>
+        <br /><br />
+        The Soup with eggs and is very good.<br />Comes with eggs and also
+        vegetables<br /><br />
+        <b>$3.50</b>
+        <div id="price-underline"></div>
+      </p>
+      <p id="food">
+        <span class="food-heading">Veggie Pot Pie</span>
+        <br /><br />
+        Amazing Pie with Veggies.<br />Really good pie for sure.
+        <br /><br />
+        <b>$7.00</b>
+        <div id="price-underline"></div>
+      </p>
+      <p id="food">
+        <span class="food-heading">Veggie Burger</span>
+        <br /><br />
+        Burger made out of complete veggies for vegans<br />No meat, no chicken, just plants.
+        <br /><br />
+        <b>$8.50</b>
+        <div id="price-underline"></div>
+      </p>
+      <p id="food">
+        <span class="food-heading">Sweet Potato Fries</span>
+        <br /><br />
+        Fries made from Sweet Potato.<br />Fried is Soybean oil, don't worry.
+        <br /><br />
+        <b>$4.50</b>
+        <div id="price-underline"></div>
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>

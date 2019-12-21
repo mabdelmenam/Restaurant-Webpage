@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>McGrub</title>
+
+  <link rel="stylesheet" href="http://localhost/delivery-project/static/css/design.css" />
+  <link rel="stylesheet" href="http://localhost/delivery-project/static/css/login.css" />
+  <script async src="http://localhost/delivery-project/static/js/login.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <h1 id="title" onclick="login(id)">McGrub</h1>
+    {% if session.logged_in %}
+    <button id="login" onclick="login(id)">Logout</button>
+    {% else %}
+    <button id="login" onclick="login(id)">Login</button>
+    {% endif %}
+  </div>
+  <div id="nav" class="navbar">
+    <a href="http://localhost/delivery-project/templates/about.html">About</a>
+    <a href="http://localhost/delivery-project/templates/menu.html">Menu</a>
+    <a href="#">Order Online</a>
+  </div>
+
+  <div class="wrapper">
+    <!--Login Form Start-->
+    <form class="login-form">
+      <h3>Login</h3>
+      <div id="login-underline"></div>
+      <input type="text" id="user" placeholder="Username" />
+      <hr />
+      <input type="text" id="password" placeholder="Password" />
+      <div class="error" id="login-error"></div>
+      <hr />
+    </form>
+    <button onclick="ajaxLogin(id)" style="display: block; margin:auto;" id="loginPage" class="btns">
+      Login
+    </button>
+    <span>Dont have an account?</span>
+    <button onclick="login(id)" id="sign-up-btn" class="btns">Sign Up</button>
+    <!--Login Form End-->
+  </div>
+</body>
+
+</html>
