@@ -18,7 +18,7 @@ function ajaxLogin() {
 
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      var redirectLink = "http://localhost/delivery-project/menu/menu.html";
+      var redirectLink = "http://localhost/delivery-project/python_wsgi/templates/menu.html";
       var loginValidity = JSON.parse(this.responseText);
 
       if (loginValidity.valid == 0) {
@@ -43,9 +43,9 @@ function login(id) {
   if (id == "login") {
     window.location.replace("http://localhost/delivery-project/python_wsgi/templates/loginPage.html");
   } else if (id == "title") {
-    window.location.replace("http://localhost/delivery-project/index.html");
+    window.location.replace("http://localhost/delivery-project/python_wsgi/templates/index.html");
   } else if (id == "sign-up-btn") {
-    window.location.replace("http://localhost/delivery-project/login-signup/sign-up.html");
+    window.location.replace("http://localhost/delivery-project/python_wsgi/templates/sign-up.html");
   }
 }
 

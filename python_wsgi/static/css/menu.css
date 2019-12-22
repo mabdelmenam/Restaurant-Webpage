@@ -49,7 +49,7 @@ div {
 }
 /*category-title--end*/
 #content {
-  background-image: url("../menu/menu-background.jpg");
+  background-image: url("http://localhost/delivery-project/python_wsgi/static/css/menu-background.jpg");
   text-align: center;
   font-size: 17px;
   font-family: Georgia, serif;
