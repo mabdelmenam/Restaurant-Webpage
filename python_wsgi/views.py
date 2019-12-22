@@ -8,8 +8,23 @@ import sys
 
 @app.route('/') #MAIN PAGE
 def index():
-    session['username'] = "Joey"
-    return "yo"
+    return render_template('index.html')
+
+@app.route('/about')#About Page
+def about():
+    return render_template('about.html')
+
+@app.route('/menu')#Menu Page
+def menu():
+    return render_template('menu.html')
+
+@app.route('/loginPage')#Login Page
+def loginPage():
+    return render_template('loginPage.html')
+
+@app.route('/signup') #Signup Page
+def signup():
+    return render_template('signup.html') 
 
 @app.route('/json_test', methods=['GET', 'POST']) #DATABASE STORAGE ROUTE
 def json_test():

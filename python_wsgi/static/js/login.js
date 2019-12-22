@@ -41,11 +41,11 @@ function ajaxLogin() {
 
 function login(id) {
   if (id == "login") {
-    window.location.replace("http://localhost/delivery-project/python_wsgi/templates/loginPage.html");
+    window.location.replace("http://localhost:8000/loginPage");
   } else if (id == "title") {
-    window.location.replace("http://localhost/delivery-project/python_wsgi/templates/index.html");
+    window.location.replace("http://localhost:8000");
   } else if (id == "sign-up-btn") {
-    window.location.replace("http://localhost/delivery-project/python_wsgi/templates/sign-up.html");
+    window.location.replace("http://localhost:8000/signup");
   }
 }
 

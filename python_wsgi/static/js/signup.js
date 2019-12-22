@@ -171,7 +171,7 @@ function ajaxSignup() {
         signupButton.disabled = true;
       } else if (userValidity.valid == 1) {
         window.location =
-          "http://localhost/delivery-project/python_wsgi/templates/loginPage.html";
+          "http://localhost:8000/loginPage";
       }
     } else {
       console.log(

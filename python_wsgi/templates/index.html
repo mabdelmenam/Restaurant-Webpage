@@ -14,11 +14,15 @@
 <body>
   <div class="header">
     <h1 id="title" onclick="login(id)">McGrub</h1>
+    {% if session.logged_in %}
+    <button id="login" onclick="login(id)">Logout</button>
+    {% else %}
     <button id="login" onclick="login(id)">Login</button>
+    {% endif %}
   </div>
   <div id="nav" class="navbar">
-    <a href="http://localhost/delivery-project/python_wsgi/templates/about.html">About</a>
-    <a href="http://localhost/delivery-project/python_wsgi/templates/menu.html">Menu</a>
+    <a href="http://localhost:8000/about">About</a>
+    <a href="http://localhost:8000/menu">Menu</a>
     <a href="#">Order Online</a>
   </div>
 </body>
