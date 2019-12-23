@@ -19,7 +19,7 @@
   <div class="header">
     <h1 id="title" onclick="login(id)">McGrub</h1>
     {% if session.logged_in %}
-    <button id="login" onclick="login(id)">Logout</button>
+    <button id="login" onclick="logout()">Logout</button>
     {% else %}
     <button id="login" onclick="login(id)">Login</button>
     {% endif %}
@@ -33,10 +33,11 @@
   <div class="wrapper">
     <!--menu-nav-->
     <div class="menu-navbar">
-      <a href="#" style="margin-left:80px;" onclick="loadCategory('content', './entrees.html');return false;">Entrees</a>
-      <a href="#" onclick="loadCategory('content', './lunch.html');return false;">Lunch</a>
-      <a href="#" onclick="loadCategory('content', 'swich-pasta.html');return false;">Sandwiches and Pastas</a>
-      <a href="#" onclick="loadCategory('content', './desserts.html');return false;">Desserts</a>
+      <a href="#" style="margin-left:80px;" onclick="loadCategory('content', 'http://localhost:8000/entrees');return false;">Entrees</a>
+      <a href="#" onclick="loadCategory('content', 'http://localhost:8000/lunch');return false;">Lunch</a>
+      <a href="#" onclick="loadCategory('content', 'http://localhost:8000/swich-pasta');return false;">Sandwiches and
+        Pastas</a>
+      <a href="#" onclick="loadCategory('content', 'http://localhost:8000/desserts');return false;">Desserts</a>
     </div>
     <div id="content">
       <h3><span class="menu-underline">Entrees</span></h3>

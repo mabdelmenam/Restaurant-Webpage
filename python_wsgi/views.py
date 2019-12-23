@@ -18,6 +18,22 @@ def about():
 def menu():
     return render_template('menu.html')
 
+@app.route('/lunch')#Lunch Page
+def lunch():
+    return render_template('lunch.html')
+
+@app.route('/swich-pasta')#Sandwich and Pasta Page
+def swich_pasta():
+    return render_template('swich-pasta.html')
+
+@app.route('/desserts')#Desserts Page
+def desserts():
+    return render_template('desserts.html')
+
+@app.route('/entrees')#Entrees Page
+def entrees():
+    return render_template('entrees.html')
+
 @app.route('/loginPage')#Login Page
 def loginPage():
     return render_template('loginPage.html')
@@ -105,10 +121,11 @@ def check_session():
 
     return jsonify(isvalid)
 
-@app.route('/drop_session')
+@app.route('/drop_session', methods=['POST'])
 def drop_session():
     session.clear()
-    return render_template('loginPage.html')
+    session['logged_in'] = False
+    return redirect(url_for('loginPage'))
 
 
 #return f"<h1>{username}</h1>"

@@ -15,7 +15,7 @@
   <div class="header">
     <h1 id="title" onclick="login(id)">McGrub</h1>
     {% if session.logged_in %}
-    <button id="login" onclick="login(id)">Logout</button>
+    <button id="login" onclick="logout()">Logout</button>
     {% else %}
     <button id="login" onclick="login(id)">Login</button>
     {% endif %}

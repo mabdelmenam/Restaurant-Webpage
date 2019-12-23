@@ -49,9 +49,23 @@ function login(id) {
   }
 }
 
+function logout() {
+  var xhttp = new XMLHttpRequest();
+
+  route = 'http://localhost:8000/drop_session';
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      window.location = "http://localhost:8000/loginPage";
+    }
+  };
+  xhttp.open('POST', route, true);
+  xhttp.setRequestHeader("Content-Type", "application/json");
+  xhttp.withCredentials = true;
+  xhttp.send(null);
+}
 
 
-window.onload = (function check_UserActivity() {
+/*window.onload = (function check_UserActivity() {
   var file = "http://localhost:8000/check_session";
   var xhttp = new XMLHttpRequest();
 
@@ -67,4 +81,4 @@ window.onload = (function check_UserActivity() {
   xhttp.open("GET", file, true);
   xhttp.withCredentials = true;
   xhttp.send(null);
-})
+})*/

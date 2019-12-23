@@ -2,7 +2,6 @@ function loadCategory(currentDiv, file) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(xhttp.responseText);
       document.getElementById(currentDiv).innerHTML = xhttp.responseText;
     }
   };
@@ -41,7 +40,7 @@ window.onload = (function plusButton() {
 
           paragraphs[i].insertBefore(buttonTag, paragraphs[i].childNodes[2]);
         } // END FOR LOOP
-        //console.log("ITS 1");
+
       }// END IF STATEMENT
     }
   };
