@@ -18,7 +18,7 @@ function ajaxLogin() {
 
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      var redirectLink = "http://localhost/delivery-project/python_wsgi/templates/menu.html";
+      var redirectLink = "http://localhost:8000/menu";
       var loginValidity = JSON.parse(this.responseText);
 
       if (loginValidity.valid == 0) {
