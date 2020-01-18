@@ -36,11 +36,14 @@ def entrees():
 
 @app.route('/loginPage')#Login Page
 def loginPage():
+    if session.get("logged_in"):
+        if session["logged_in"] == True:
+            return render_template('index.html')
     return render_template('loginPage.html')
 
 @app.route('/signup') #Signup Page
 def signup():
-    return render_template('signup.html') 
+    return render_template('sign-up.html') 
 
 @app.route('/json_test', methods=['GET', 'POST']) #DATABASE STORAGE ROUTE
 def json_test():

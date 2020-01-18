@@ -2,6 +2,7 @@ function loadCategory(currentDiv, file) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
+      window.onload = plusButton();
       document.getElementById(currentDiv).innerHTML = xhttp.responseText;
     }
   };
@@ -10,7 +11,7 @@ function loadCategory(currentDiv, file) {
   //console.log(xhttp.send());
   xhttp.send();
 }
-window.onload = (function plusButton() {
+function plusButton() {
   //create condition here to run, based on true or false of user logged in or not
   //if user is logged in then continue on with the script and create the buttons,
   // if not then do nothing
@@ -32,6 +33,7 @@ window.onload = (function plusButton() {
         for (var i = 0; i < paragraphs.length; i++) {// BEGIN FOR LOOP
           var buttonTag = document.createElement('button');
           buttonTag.className = 'plus-btn';
+          //buttonTag.addEventListener("click", modalControl(), false);
 
           var iTag = document.createElement('i');
           iTag.className = 'fa fa-plus';
@@ -47,4 +49,31 @@ window.onload = (function plusButton() {
   xhttp.open("GET", file, true);
   xhttp.withCredentials = true;
   xhttp.send(null);
-})
+}
+window.onload = plusButton();
+
+
+
+
+//function modalControl() {
+var btn = document.getElementsByClassName('plus-btn');
+if (btn) {
+  console.log("exsists");
+}
+var modal = document.getElementById('modal');
+var closebtn = document.getElementById('modal-close');
+console.log("clicked1");
+btn.onclick = function () {
+  console.log("clicked");
+  modal.style.display = 'block';
+}
+closebtn.onclick = function () {
+  modal.style.display = 'none';
+}
+window.onclick = function () {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+}
+//}
+

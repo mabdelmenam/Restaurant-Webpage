@@ -6,12 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>McGrub</title>
 
+  <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico') }}">
   <link rel="stylesheet" href="http://localhost/delivery-project/python_wsgi/static/css/design.css" />
   <link rel="stylesheet" href="http://localhost/delivery-project/python_wsgi/static/css/menu.css" />
 
 
   <script async src="http://localhost/delivery-project/python_wsgi/static/js/menu.js"></script>
-  <script src="https://kit.fontawesome.com/dbb9f1c4b3.js"></script>
+  <script async src="https://kit.fontawesome.com/dbb9f1c4b3.js"></script>
   <script async src="http://localhost/delivery-project/python_wsgi/static/js/login.js"></script>
 </head>
 
@@ -38,6 +39,12 @@
       <a href="#" onclick="loadCategory('content', 'http://localhost:8000/swich-pasta');return false;">Sandwiches and
         Pastas</a>
       <a href="#" onclick="loadCategory('content', 'http://localhost:8000/desserts');return false;">Desserts</a>
+    </div>
+    <div class="modal">
+      <div class="modal-content">
+        <button class="modal-btn" id="modal-close"></button>
+        <p>Some words</p>
+      </div>
     </div>
     <div id="content">
       <h3><span class="menu-underline">Entrees</span></h3>
@@ -75,6 +82,7 @@
         <div id="price-underline"></div>
       </p>
     </div>
+
   </div>
 </body>
 
