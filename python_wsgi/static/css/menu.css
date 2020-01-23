@@ -85,10 +85,12 @@ div {
   display: none;
   font-family: Georgia, serif;
   font-size: 17px;
-  width: 100%;
+  width: 50%;
   height: 100%;
-  overflow: auto;
-  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
 }
 .modal-content {
   background-color: #fefefe;
@@ -96,4 +98,20 @@ div {
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+}
+#modal-close{
+  border: none;
+  border-radius: 2px;
+  color: black;
+  margin-left: 10px;
+  font-size: 17px;
+  cursor: pointer;
+}
+input[type="text"],{
+  border-radius: 15px;
+  padding: 8px;
+  margin-bottom: 15px;
+  font-family: Rockwell;
+  font-size: 15px;
+  outline: none;
 }
