@@ -33,6 +33,7 @@ function plusButton() {
           //console.log(foodName + " " + i);
           var buttonTag = document.createElement('button');
           buttonTag.className = 'plus-btn';
+          buttonTag.id = i;
 
           var iTag = document.createElement('i');
           iTag.className = 'fa fa-plus';
@@ -40,21 +41,8 @@ function plusButton() {
           buttonTag.appendChild(iTag);
           paragraphs[i].insertBefore(buttonTag, paragraphs[i].childNodes[2]);
 
-          buttonTag.onclick = function () {
-            modal[0].style.display = 'block';
-          }
         } // END FOR LOOP
       }// END IF STATEMENT
-      var buttonClass = document.getElementsByClassName('plus-btn');
-      console.log("Button Class Length: ", buttonClass.length);
-      x = buttonClass.length;
-      console.log("X: " + x);
-      for (var i = 0; i < buttonClass.length; i++) {
-        console.log(buttonClass[i]);
-        buttonClass[i].onclick = (function (i) {
-          food(arr[i]);
-        })(i);
-      }
     }
   };
   xhttp.open("GET", file, true);
@@ -63,13 +51,28 @@ function plusButton() {
 }
 window.onload = plusButton();
 
-/*document.getElementById('cell' + i).onclick = (function (i) {
-  return function () { select(i); }
-})(i);*/
-function food(foodName) {
-  console.log("yo: ", foodName);
-  foodDisplay.innerHTML = foodName;
-}
+var buttonClass = document.getElementsByClassName('plus-btn');
+
+setTimeout(function () {
+
+  var handler = function (index) {
+    // var u = document.getElementById(index);
+    modal[0].style.display = 'block';
+    foodDisplay.innerHTML = arr[index];
+    //console.log(u);
+    console.log();
+  };
+
+
+  for (var i = 0; i < buttonClass.length; i++) {
+    buttonClass[i].onclick = (function () {
+      var currI = i;
+      return function () {
+        handler(currI);
+      }
+    })();
+  }
+}, 15);
 //modal functionality
 closebtn.onclick = function () {
   modal[0].style.display = 'none';
