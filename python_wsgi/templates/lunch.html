@@ -1,5 +1,29 @@
 <!DOCTYPE html>
 <html>
+  <script>
+  var buttonClass = document.getElementsByClassName('plus-btn');
+
+setTimeout(function () {
+
+  var handler = function (index) {
+    // var u = document.getElementById(index);
+    modal[0].style.display = 'block';
+    foodDisplay.innerHTML = arr[index];
+    //console.log(u);
+    console.log();
+  };
+
+
+  for (var i = 0; i < buttonClass.length; i++) {
+    buttonClass[i].onclick = (function () {
+      var currI = i;
+      return function () {
+        handler(currI);
+      }
+    })();
+  }
+}, 15);
+  </script>
 <div class="content">
   <h3><span class="menu-underline">Lunch</span></h3>
   <p id="food">

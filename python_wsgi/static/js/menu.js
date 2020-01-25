@@ -8,6 +8,7 @@ function loadCategory(currentDiv, file) {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       window.onload = plusButton();
+      window.onload = food();
       document.getElementById(currentDiv).innerHTML = xhttp.responseText;
     }
   };
@@ -50,29 +51,33 @@ function plusButton() {
   xhttp.send(null);
 }
 window.onload = plusButton();
+window.onload = food();
 
-var buttonClass = document.getElementsByClassName('plus-btn');
+function food(){
+  var buttonClass = document.getElementsByClassName('plus-btn');
+  setTimeout(function () {
+    console.log(buttonClass)
+  console.log(buttonClass.length)
+      var handler = function (index) {
+      console.log("3")
+      // var u = document.getElementById(index);
+      modal[0].style.display = 'block';
+      foodDisplay.innerHTML = arr[index];
+      //console.log(u);
+      console.log();
+    };
+  
+    for (var i = 0; i < buttonClass.length; i++) {
+      buttonClass[i].onclick = (function () {
+        var currI = i;
+        return function () {
+          handler(currI);
+        }
+      })();
+    }
+  }, 15);
+}
 
-setTimeout(function () {
-
-  var handler = function (index) {
-    // var u = document.getElementById(index);
-    modal[0].style.display = 'block';
-    foodDisplay.innerHTML = arr[index];
-    //console.log(u);
-    console.log();
-  };
-
-
-  for (var i = 0; i < buttonClass.length; i++) {
-    buttonClass[i].onclick = (function () {
-      var currI = i;
-      return function () {
-        handler(currI);
-      }
-    })();
-  }
-}, 15);
 //modal functionality
 closebtn.onclick = function () {
   modal[0].style.display = 'none';
