@@ -13,13 +13,9 @@ function loadCategory(currentDiv, file) {
       names = [];
       prices = [];
       window.onload = plusButton();
-<<<<<<< HEAD
       setTimeout(function () { //setting a timer waiting for plusButton to completely finish
         window.onload = food();
       }, 300);
-=======
-      window.onload = food();
->>>>>>> 6c3cc745efd27667f5d96a2c7b1348f4b466d5c7
       document.getElementById(currentDiv).innerHTML = xhttp.responseText;
     }
   };
