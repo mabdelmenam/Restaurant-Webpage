@@ -13,9 +13,13 @@ function loadCategory(currentDiv, file) {
       names = [];
       prices = [];
       window.onload = plusButton();
+<<<<<<< HEAD
       setTimeout(function () { //setting a timer waiting for plusButton to completely finish
         window.onload = food();
       }, 300);
+=======
+      window.onload = food();
+>>>>>>> 6c3cc745efd27667f5d96a2c7b1348f4b466d5c7
       document.getElementById(currentDiv).innerHTML = xhttp.responseText;
     }
   };
@@ -65,6 +69,7 @@ function plusButton() {
 window.onload = plusButton();
 window.onload = food();
 
+<<<<<<< HEAD
 
 /**Creating onclick functions for plus buttons in buttonClass, and modal functionality */
 var buttonClass = document.getElementsByClassName('plus-btn');
@@ -93,6 +98,33 @@ function food() {
     }
   }, 50);
 }
+=======
+function food(){
+  var buttonClass = document.getElementsByClassName('plus-btn');
+  setTimeout(function () {
+    console.log(buttonClass)
+  console.log(buttonClass.length)
+      var handler = function (index) {
+      console.log("3")
+      // var u = document.getElementById(index);
+      modal[0].style.display = 'block';
+      foodDisplay.innerHTML = arr[index];
+      //console.log(u);
+      console.log();
+    };
+  
+    for (var i = 0; i < buttonClass.length; i++) {
+      buttonClass[i].onclick = (function () {
+        var currI = i;
+        return function () {
+          handler(currI);
+        }
+      })();
+    }
+  }, 15);
+}
+
+>>>>>>> 6c3cc745efd27667f5d96a2c7b1348f4b466d5c7
 //modal functionality
 closebtn.onclick = function () {
   modal[0].style.display = 'none';
