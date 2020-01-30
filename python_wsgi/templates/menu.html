@@ -40,15 +40,36 @@
         Pastas</a>
       <a href="#" onclick="loadCategory('content', 'http://localhost:8000/desserts');return false;">Desserts</a>
     </div>
+
     <div class="modal">
+      <!--MODAL-->
       <div class="modal-content">
         <button class="modal-btn" id="modal-close">
           <i class="fas fa-times"></i>
         </button>
-        <h3 id="modal-food-heading"></h3>
-        <input type="text" id="quantity" placeholder="Quantity" required>
+        <img src="../static/images/stars.PNG" style='width:100%;height:300px;'>
+        <div id="modal-title">
+          <h3 id="modal-food-heading"></h3>
+          <h2 id="modal-food-price"></h2>
+        </div>
+        <hr />
+        <h2>Food Instructions</h2>
+        <div style="padding-left:5px;">
+          <textarea id="food-instructions" placeholder="Food Instructions"></textarea>
+        </div>
+        <hr />
+        <h2 style="display: inline-block;padding-right: 10px;">Quantity</h2>
+        <button id="quantity-minus" onclick=foodQuantity(id)>
+          <i class="fa fa-minus"></i>
+        </button>
+        <p id="quantity" style="display:inline-block;"> 0 </p>
+        <button id="quantity-plus" onclick=foodQuantity(id)>
+          <i class="fa fa-plus"></i>
+        </button>
       </div>
     </div>
+    <!--MODAL-->
+
     <div id="content">
       <h3><span class="menu-underline">Entrees</span></h3>
 

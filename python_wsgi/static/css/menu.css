@@ -49,7 +49,7 @@ div {
 }
 /*category-title--end*/
 #content {
-  background-image: url("http://localhost/delivery-project/python_wsgi/static/css/menu-background.jpg");
+  background-image: url("http://localhost/delivery-project/python_wsgi/static/images/menu-background.jpg");
   text-align: center;
   font-size: 17px;
   font-family: Georgia, serif;
@@ -82,36 +82,71 @@ div {
 
 /* everything modal related */
 .modal {
+  content: "";
   display: none;
   font-family: Georgia, serif;
-  font-size: 17px;
-  width: 50%;
+  position: fixed;
+  width:100%;
   height: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
+  top: 0;
+  left: 0;
 }
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+
+  width: 70%; /* Could be more or less, depending on screen size */
+  max-width: 600px;
+  top: 20%;
+  left: 50%;
+  position:fixed;
+
+  transform: translate(-50%, -50%);
+  -webkit-transition: -webkit-transform 200ms ease-out;
+}
+hr {
+  width: 75%;
+  border-width: 1.5px;
+  border-color: darkorchid;
+  margin: 30px;
 }
 #modal-close{
   border: none;
   border-radius: 2px;
   color: black;
   margin-left: 10px;
-  font-size: 17px;
+  font-size: 25px;
   cursor: pointer;
 }
 input[type="text"],{
+  width: 60%;
+  height: 30%;
   border-radius: 15px;
-  padding: 8px;
   margin-bottom: 15px;
   font-family: Rockwell;
   font-size: 15px;
   outline: none;
+}
+#modal-title{/*Food Name and Price displays*/
+  background-color: #ded7d8;
+  padding: 10px;
+  width: fit-content;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+.modal h2{
+  margin-top: 10px;
+  font-size: 15px;
+}
+.modal h3{
+  font-size:17px;
+  margin-bottom: 2px;
+}
+#food-instructions{
+  display: block;
+  width: 90%;
+  height: 75px;
+  margin-bottom: 20px;
 }
