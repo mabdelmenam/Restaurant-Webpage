@@ -7,13 +7,14 @@
   <title>McGrub</title>
 
   <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico') }}">
-  <link rel="stylesheet" href="http://localhost/delivery-project/python_wsgi/static/css/design.css" />
-  <link rel="stylesheet" href="http://localhost/delivery-project/python_wsgi/static/css/menu.css" />
+  <link rel="stylesheet" href="http://localhost:8000/static/css/design.css" />
+  <link rel="stylesheet" href="http://localhost:8000/static/css/menu.css" />
 
 
-  <script async src="http://localhost/delivery-project/python_wsgi/static/js/menu.js"></script>
+  <script async src="http://localhost:8000/static/js/menu.js"></script>
+  <script async src="http://localhost:8000/static/js/quantity.js"></script>
   <script async src="https://kit.fontawesome.com/dbb9f1c4b3.js"></script>
-  <script async src="http://localhost/delivery-project/python_wsgi/static/js/login.js"></script>
+  <script async src="http://localhost:8000/static/js/login.js"></script>
 </head>
 
 <body>
@@ -66,6 +67,8 @@
         <button id="quantity-plus" onclick=foodQuantity(id)>
           <i class="fa fa-plus"></i>
         </button>
+        <button id="add-button">Add</button>
+        <p id="final-price" style="display:inline-block;"></p>
       </div>
     </div>
     <!--MODAL-->

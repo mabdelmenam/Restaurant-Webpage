@@ -2,6 +2,7 @@ var names = [];
 var prices = [];
 var foodDisplay = document.getElementById("modal-food-heading");
 var priceDisplay = document.getElementById("modal-food-price");
+var finalPrice = document.getElementById("final-price");
 var modal = document.getElementsByClassName('modal');
 var closebtn = document.getElementById('modal-close');
 
@@ -68,19 +69,23 @@ window.onload = food();
 
 /**Creating onclick functions for plus buttons in buttonClass, and modal functionality */
 var buttonClass = document.getElementsByClassName('plus-btn');
+var num;
 
 function food() {
   setTimeout(function () {
-    console.log(prices)
+    console.log(prices);
 
     var handler = function (index) {
-      console.log("Inside Handler function");
       modal[0].style.display = 'block';
+
       foodDisplay.innerHTML = names[index];
       priceDisplay.innerHTML = prices[index];
+      finalPrice.innerHTML = "$" + 0;
+
+      num = parseFloat(prices[index].replace("$", "")); //Taking the food price and converting it to a float, removing the ' $ '
+
       console.log();
     };
-    console.log("Before For loop");
     console.log("ButtonClass: ", buttonClass);
     console.log("Button Class Length: ", buttonClass.length);
     for (var i = 0; i < buttonClass.length; i++) {
@@ -95,22 +100,48 @@ function food() {
 }
 //modal functionality
 closebtn.onclick = function () {
-  modal[0].style.display = 'none';
+  modalReset();
 }
 
-/**Quantity counter */
-var counter = 0;
-function foodQuantity(id) {
-  var quantity = document.getElementById("quantity");
-  if (id == "quantity-plus") {
-    counter++;
-  } else {
-    counter--;
-    if (counter < 0) {
-      counter = 0;
-      quantity.innerHTML = counter;
-      return;
+//Add Button
+var addButton = document.getElementById("add-button");
+addButton.onclick = function () {
+  var foodDB = foodDisplay.innerHTML;
+  var finalPriceDB = num2;
+  var quantityDB = parseInt(document.getElementById("quantity").innerHTML);
+  var instructionsDB = document.getElementById('food-instructions').value;
+
+  var info = {
+    food: foodDB,
+    price: finalPriceDB,
+    quantity: quantityDB,
+    food_instructions: instructionsDB
+  };
+
+  var finalData = JSON.stringify(info);
+  var file = "http://localhost:8000/food_database";
+
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log("RESPONSE: ", this.responseText);
     }
-  }
-  quantity.innerHTML = counter;
+  };
+
+  xhttp.open("POST", file, true);
+  xhttp.setRequestHeader("Content-Type", "application/json");
+  xhttp.send(finalData);
+
+  //modalReset();
+}
+
+
+
+function modalReset() {
+  modal[0].style.display = 'none';
+  document.getElementById("food-instructions").value = "";
+  document.getElementById('quantity').innerHTML = 0;
+  counter = 0;
+  num2 = 0;
 }

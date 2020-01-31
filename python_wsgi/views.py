@@ -111,6 +111,15 @@ def login_validate():
         return jsonify(isvalid)
     return '<h1>Hello</h1>'
 
+@app.route('/food_database', methods=['GET','POST'])
+def food_database():
+    if request.method == 'POST':
+        req_data = request.get_json()
+        print(req_data, file=sys.stderr)
+
+        return 'Working...'
+
+
 @app.route('/check_session', methods=['GET'])
 def check_session():
     isvalid = {}
