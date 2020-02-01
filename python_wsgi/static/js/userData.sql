@@ -15,3 +15,11 @@ CREATE TABLE users
     home_address VARCHAR(255),
     zipcode VARCHAR(10)
 );
+
+CREATE TABLE foodOrder
+(
+    foodName VARCHAR(25),
+    price VARCHAR(7),
+    quantity VARCHAR(3),
+    instructions VARCHAR(300)
+);

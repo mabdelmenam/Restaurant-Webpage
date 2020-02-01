@@ -111,10 +111,24 @@ def login_validate():
         return jsonify(isvalid)
     return '<h1>Hello</h1>'
 
-@app.route('/food_database', methods=['GET','POST'])
+@app.route('/food_database', methods=['GET','POST']) #Storing food item data into database
 def food_database():
     if request.method == 'POST':
         req_data = request.get_json()
+        cur = my_mysql.connection.cursor()
+
+        foodName = req_data['food']
+        price = req_data['price']
+        quantity = req_data['quantity']
+        instructions = req_data['food_instructions']
+
+        cur.execute("INSERT INTO foodorder(foodName, price, quantity, instructions) VALUES(%s, %s, %s, %s)",
+                    (foodName, price, quantity, instructions))
+        
+        my_mysql.connection.commit()
+        cur.close()
+
+
         print(req_data, file=sys.stderr)
 
         return 'Working...'

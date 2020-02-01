@@ -107,7 +107,7 @@ closebtn.onclick = function () {
 var addButton = document.getElementById("add-button");
 addButton.onclick = function () {
   var foodDB = foodDisplay.innerHTML;
-  var finalPriceDB = num2;
+  var finalPriceDB = num2.toFixed(2);
   var quantityDB = parseInt(document.getElementById("quantity").innerHTML);
   var instructionsDB = document.getElementById('food-instructions').value;
 
@@ -117,7 +117,7 @@ addButton.onclick = function () {
     quantity: quantityDB,
     food_instructions: instructionsDB
   };
-
+  console.log(info.price);
   var finalData = JSON.stringify(info);
   var file = "http://localhost:8000/food_database";
 

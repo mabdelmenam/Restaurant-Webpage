@@ -21,4 +21,5 @@ function foodQuantity(id) {
         }
     }
     quantity.innerHTML = counter;
+    console.log(num2);
 }
