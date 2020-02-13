@@ -132,7 +132,16 @@ def food_database():
         print(req_data, file=sys.stderr)
 
         return 'Working...'
+    elif request.method == 'GET':
+        cur = my_mysql.connection.cursor()
+        cur.execute("SELECT * FROM foodorder")
+        data = cur.fetchall()
+        cur.close()
 
+        print(data, file=sys.stderr)
+        age = 'two'
+        # return jsonify(data = data)
+        return render_template('menu.html', data = data)
 
 @app.route('/check_session', methods=['GET'])
 def check_session():
@@ -152,6 +161,3 @@ def drop_session():
     session.clear()
     session['logged_in'] = False
     return redirect(url_for('loginPage'))
-
-
-#return f"<h1>{username}</h1>"

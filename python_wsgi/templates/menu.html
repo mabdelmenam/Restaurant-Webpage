@@ -24,29 +24,32 @@
     <button id="login" onclick="logout()">Logout</button>
 
     <div class="dropdown">
-      <button id="shopping-bag" onclick="dropdown()"><i class="fas fa-shopping-bag"></i></button>
+      <button id="shopping-bag" onclick="dropdown(id)"><i class="fas fa-shopping-bag"></i></button>
       <div id="dropdown-content">
         <h4 id="dropdown-title">Your Order</h4>
-        <table>
+        <table id="dropdown-table">
+          {% for col in data %}
           <tr>
-            <td>Q</td>
-            <td>Food Name</td>
+            <td>{{col.0}}</td>
+            <td style="color:darkcyan">{{col.1}}</td>
             <td>X</td>
-            <td>$3.56</td>
+            <td>{{col.2}}</td>
           </tr>
           <tr>
-            <td>Q2</td>
-            <td>Food 2</td>
-            <td>X</td>
-            <td>$10.77</td>
+            <td id='no-line' colspan='4'>{{col.3}}</td>
+            <td id='no-line'></td> <!-- required to make line seperations between rows-->
+            <td id='no-line'></td>
+            <td id='no-line'></td>
           </tr>
+          {% endfor %}
         </table>
+        <div id="line-under-table"></div>
+        <h5 id="dropdown-subtotal">Items Subtotal</h5>
       </div>
     </div>
 
     {% else %}
     <button id="login" onclick="login(id)">Login</button>
-    <p>yo</p>
     {% endif %}
   </div>
   <div id="nav" class="navbar" style="margin-top: 35px;">

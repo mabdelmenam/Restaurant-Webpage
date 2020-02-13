@@ -90,25 +90,39 @@ body {
 
 #dropdown-content{
   display: none;
+  float:right;
   border-radius: 15px;
   padding-left: 10px;
   background-color: white;
-  font-size: 14px;
+  font-size: 13px;
   font-family: Georgia;
   height: auto;
-  width: 18%;
+  width: 15%;
   color: black;
+
+  -webkit-transition: opacity 2.0s ease-in;
 }
 #dropdown-title{
   display:block;
   padding-top: 15px;
-}
-#dropdown-content h5{
-  display: inline-block;
+  border-bottom: 1.5px solid black;
+  padding-bottom: 5px;
 }
 table{
-  max-width: 15%;
+  max-width: 17%;
+  border-collapse: collapse;
   table-layout:fixed;
+}
+#line-under-table{
+  border-bottom: 1.5px solid black;
+  padding-bottom: 5px;
+}
+th, #no-line{
+  border-bottom: 3px solid #4700ff;
+  font-size: 11px;
+  padding-bottom: 7px;
+  padding-top: 10px;
+  padding-left: 20px;
 }
 tr td:not(:first-child){
   max-width:125px;

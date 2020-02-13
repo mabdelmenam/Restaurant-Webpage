@@ -25,7 +25,7 @@ function foodQuantity(id) {
 }
 
 
-//Add Button
+//Add Button inside of modal
 var addButton = document.getElementById("add-button");
 addButton.onclick = function () {
     var foodDB = foodDisplay.innerHTML;
@@ -57,14 +57,42 @@ addButton.onclick = function () {
 
     modalReset();
 }
+//END OF ADD BUTTON FOR MODAL
 
 function dropdown() {
     var dropdown = document.getElementById("dropdown-content");
-    //var dropdown2 = dropdown.document.querySelectorAll('h1,a');
-    console.log(dropdown);
-    //console.log(dropdown.classList);
-    var x = dropdown.style.display = 'block';
-    dropdown.classList.toggle(x);
+    var y = dropdown.style.display = 'block';
+    dropdown.classList.toggle(y);
 
-    console.log("clicked");
+    window.addEventListener("mouseup", function () {
+        if (!dropdown.contains(event.target)) {
+            dropdown.style.display = 'none';
+        }
+    });
+
+    //AJAX
+    var file = "http://localhost:8000/food_database";
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var table = document.getElementById('dropdown-table');
+            console.log('Before: ', table.innerHTML);
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(this.responseText, "text/html");
+            var tds = xmlDoc.getElementById('dropdown-table');
+
+            console.log(tds);
+
+            table.innerHTML = tds.innerHTML;
+            console.log('After: ', table.innerHTML);
+            //console.log(this.responseText);
+            //var response = JSON.parse(this.responseText);
+            //console.log("MINE: ", response)
+        }
+    };
+
+    xhttp.open("GET", file, true);
+    xhttp.send();
+
 }
