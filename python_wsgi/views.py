@@ -122,8 +122,10 @@ def food_database():
         quantity = req_data['quantity']
         instructions = req_data['food_instructions']
 
-        cur.execute("INSERT INTO foodorder(foodName, price, quantity, instructions) VALUES(%s, %s, %s, %s)",
-                    (foodName, price, quantity, instructions))
+        cur.execute("INSERT INTO foodorder(quantity, foodName, price, instructions) VALUES(%s, %s, %s, %s)",
+                    (quantity, foodName, price, instructions))
+
+        #cur.execute("INSERT INTO foodorder(subtotal) VALUES(%s)", (subtotal))
         
         my_mysql.connection.commit()
         cur.close()
@@ -136,12 +138,17 @@ def food_database():
         cur = my_mysql.connection.cursor()
         cur.execute("SELECT * FROM foodorder")
         data = cur.fetchall()
+
+        cur.execute("SELECT sum(price) from foodorder")
+        subtotal = cur.fetchall()
+        subtotal2 = float(subtotal[0][0])
+        subtotalFinal = format(subtotal2, '.2f')
+
+        #print(subtotalInt, file=sys.stderr)
+        my_mysql.connection.commit()
         cur.close()
 
-        print(data, file=sys.stderr)
-        age = 'two'
-        # return jsonify(data = data)
-        return render_template('menu.html', data = data)
+        return render_template('menu.html', data = data, subtotal = subtotalFinal)
 
 @app.route('/check_session', methods=['GET'])
 def check_session():

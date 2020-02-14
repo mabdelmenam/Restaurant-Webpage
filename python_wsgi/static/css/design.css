@@ -69,6 +69,7 @@ body {
 #login:focus {
   outline: none;
 }
+/*BAG CSS*/
 #shopping-bag{
   font-size: 20px;
   text-decoration: none;
@@ -87,14 +88,15 @@ body {
 #shopping-bag:active{
   background-color: gray;
 }
-
+/*END BAG CSS*/
+/*DROPDOWN*/
 #dropdown-content{
   display: none;
   float:right;
   border-radius: 15px;
   padding-left: 10px;
   background-color: white;
-  font-size: 13px;
+  font-size: 13.5px;
   font-family: Georgia;
   height: auto;
   width: 15%;
@@ -109,7 +111,7 @@ body {
   padding-bottom: 5px;
 }
 table{
-  max-width: 17%;
+  max-width: 20%;
   border-collapse: collapse;
   table-layout:fixed;
 }
@@ -129,3 +131,22 @@ tr td:not(:first-child){
   padding-left:20px;
    word-wrap:break-word; 
 }
+#dropdown-subtotal{
+  display:inline-block;
+  padding-right:25%;
+  margin-bottom: -5%;
+}
+#dropdown-btn{
+    font-size: 13.5px;
+    color: black;
+    font-weight: bold;
+    font-family: Georgia;
+    text-decoration: none;
+    border: 2.5px solid #525252;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left:15%;
+    margin-top:3%;
+    margin-bottom: 2%;
+}
+/*END DROPDOWN*/

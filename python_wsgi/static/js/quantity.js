@@ -64,31 +64,30 @@ function dropdown() {
     var y = dropdown.style.display = 'block';
     dropdown.classList.toggle(y);
 
-    window.addEventListener("mouseup", function () {
+    window.addEventListener("mouseup", function () { //Clicking anywhere out of dropdown to close it
         if (!dropdown.contains(event.target)) {
             dropdown.style.display = 'none';
         }
     });
 
-    //AJAX
+    //AJAX PORTION
     var file = "http://localhost:8000/food_database";
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var table = document.getElementById('dropdown-table');
-            console.log('Before: ', table.innerHTML);
+            var subtotal = document.getElementById('subtotal-value')
+
             var parser = new DOMParser();
-            var xmlDoc = parser.parseFromString(this.responseText, "text/html");
+            var xmlDoc = parser.parseFromString(this.responseText, "text/html"); //getting page from response text
             var tds = xmlDoc.getElementById('dropdown-table');
 
-            console.log(tds);
-
+            var subtotalValue = xmlDoc.getElementById('subtotal-value');
+            console.log(subtotalValue)
             table.innerHTML = tds.innerHTML;
+            subtotal.innerHTML = subtotalValue.innerHTML;
             console.log('After: ', table.innerHTML);
-            //console.log(this.responseText);
-            //var response = JSON.parse(this.responseText);
-            //console.log("MINE: ", response)
         }
     };
 

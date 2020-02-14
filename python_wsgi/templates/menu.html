@@ -29,6 +29,7 @@
         <h4 id="dropdown-title">Your Order</h4>
         <table id="dropdown-table">
           {% for col in data %}
+          {% if col.1 is not none %}
           <tr>
             <td>{{col.0}}</td>
             <td style="color:darkcyan">{{col.1}}</td>
@@ -41,10 +42,14 @@
             <td id='no-line'></td>
             <td id='no-line'></td>
           </tr>
+          {% endif %}
           {% endfor %}
         </table>
         <div id="line-under-table"></div>
-        <h5 id="dropdown-subtotal">Items Subtotal</h5>
+        <h5 id="dropdown-subtotal">Items Subtotal:</h5>
+        <h5 style="float:right" id="subtotal-value">{{subtotal}}</h5>
+        <div id="line-under-table"></div>
+        <button id="dropdown-btn" onclick="checkout()">Proceed to Checkout</button>
       </div>
     </div>
 

@@ -18,8 +18,9 @@ CREATE TABLE users
 
 CREATE TABLE foodOrder
 (
+    quantity VARCHAR(3),
     foodName VARCHAR(25),
     price VARCHAR(7),
-    quantity VARCHAR(3),
-    instructions VARCHAR(300)
+    instructions VARCHAR(300),
+    subtotal VARCHAR(7)
 );
