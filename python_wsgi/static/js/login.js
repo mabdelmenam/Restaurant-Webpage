@@ -46,6 +46,8 @@ function login(id) {
     window.location.replace("http://localhost:8000");
   } else if (id == "sign-up-btn") {
     window.location.replace("http://localhost:8000/signup");
+  } else if (id == "dropdown-btn") {
+    window.location.replace("http://localhost:8000/checkout");
   }
 }
 

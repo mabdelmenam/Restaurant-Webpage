@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>McGrub</title>
+
+    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="http://localhost:8000/static/css/checkout.css" />
+    <link rel="stylesheet" href="http://localhost:8000/static/css/design.css" />
+    <link rel="stylesheet" href="http://localhost:8000/static/css/menu.css" />
+
+    <script async src="https://kit.fontawesome.com/dbb9f1c4b3.js"></script>
+    <script async src="http://localhost:8000/static/js/checkout.js"></script>
+    <script async src="http://localhost:8000/static/js/login.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1 id="title" onclick="login(id)">McGrub</h1>
+        {% if session.logged_in %}
+        <button id="login" onclick="logout()">Logout</button>
+        {% else %}
+        <button id="login" onclick="login(id)">Login</button>
+        {% endif %}
+    </div>
+    <div id="checkout-title">
+        <h3 style="margin-bottom:5px;">Review and Place Order</h3>
+        <h5 style="font-size:15px;margin-bottom:3%;">Review all your information and order details</h5>
+    </div>
+    <div id="order-details">
+        <h3 class="titles">Order Details</h3>
+        {% for i in info %}
+        <h4 id="info" style="display:inline-block; margin-bottom:0;">{{i.0}}</h4>
+        <h4 id="info" style="display:inline-block; margin-bottom:0">{{i.1}}</h4>
+        <h4 id="info">{{i.2}}</h4>
+        <h4 id="info">{{i.3}}</h4>
+        <h4 id="info">{{i.4}}</h4>
+        {% endfor %}
+        <button id="ins-btn" onclick='del_button()'><i class="fa fa-plus"></i></button>
+        <h4 id="del-ins">Add Delivery Instructions</h4>
+        <textarea id="del-ins-text" placeholder="Delivery Instructions"></textarea>
+
+        <div id="seperator"></div>
+        <div id="payment">
+            <h3 class="titles">Payment Information</h3>
+            <button id="cash" class="payment-btns">Cash</button>
+            <button id="card" class="payment-btns" style="margin-left:20px;">Credit/Debit Card</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

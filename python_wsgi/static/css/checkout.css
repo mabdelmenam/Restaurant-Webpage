@@ -1,0 +1,49 @@
+/*ORDER RELATED*/
+#checkout-title {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 50px;
+    font-family: Verdana;
+}
+#order-details{
+    margin-left:50px;
+    font-size:12px;
+    font-family: Verdana;
+}
+.titles{
+    font-size:14px;
+    color: red;
+    font-weight: bold;
+    text-decoration:underline;
+}
+#del-ins{
+    display: inline;
+    margin-left: 10px;
+    color: red;
+}
+#del-ins-text{
+    display:none;
+    width: 460px;
+    height:90px;
+}
+#seperator{
+  border-bottom: 3px solid #4700ff;
+  font-size: 11px;
+}
+/*ORDER RELATED END*/
+/*PAYMENT START*/
+.payment-btns {
+    font-weight: bold;
+    font-size: 14px;
+    padding-left: 5%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 5%;
+    text-decoration: none;
+    border: 1px solid purple;
+    border-radius: 5px;
+}
+.payment-btns:focus{
+    color: #fbfbfb;
+    background-color:#000000;
+}

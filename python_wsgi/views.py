@@ -34,6 +34,10 @@ def desserts():
 def entrees():
     return render_template('entrees.html')
 
+@app.route('/checkout')#Checkout Page
+def checkout():
+    return render_template('checkout.html')
+
 @app.route('/loginPage')#Login Page
 def loginPage():
     if session.get("logged_in"):
@@ -76,6 +80,17 @@ def json_test():
         cur.close()
         valid['valid'] = 1
         return jsonify(valid)
+
+    elif request.method == 'GET':
+        cur = my_mysql.connection.cursor()
+        #print("Username: ", session.get('username'), file=sys.stderr)
+        cur.execute("SELECT firstName,lastName,home_address,zipcode,pnumber  FROM users WHERE username=%s", [session.get('username')])
+        info = cur.fetchall()
+        
+        my_mysql.connection.commit()
+        cur.close()
+
+        return render_template('checkout.html', info = info)
     return '<h1>Success</h1>'
 
 @app.route('/login_validate', methods=['GET', 'POST'])
