@@ -38,15 +38,22 @@
         <h4 id="info">{{i.3}}</h4>
         <h4 id="info">{{i.4}}</h4>
         {% endfor %}
-        <button id="ins-btn" onclick='del_button()'><i class="fa fa-plus"></i></button>
+        <button id="ins-btn" onclick='del_button(id)'><i class="fa fa-plus"></i></button>
         <h4 id="del-ins">Add Delivery Instructions</h4>
         <textarea id="del-ins-text" placeholder="Delivery Instructions"></textarea>
 
         <div id="seperator"></div>
         <div id="payment">
             <h3 class="titles">Payment Information</h3>
-            <button id="cash" class="payment-btns">Cash</button>
-            <button id="card" class="payment-btns" style="margin-left:20px;">Credit/Debit Card</button>
+            <button id="cash" class="payment-btns" onclick='del_button(id)'>Cash</button>
+            <button id="card" class="payment-btns" style="margin-left:20px;" onclick='del_button(id)'>Credit/Debit Card</button>
+            <div style="display:none" id="cash-display">
+                <i id="check" class="fas fa-check-circle"></i>
+                <h4 style="display:inline-block; font-size:14px;">Pay the delivery driver cash upon food arrival.</h4>
+            </div>
+            <div style="display:none" id="credit-display">
+                <p>credit</p>
+            </div>
         </div>
     </div>
 

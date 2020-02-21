@@ -19,9 +19,21 @@ function checkout() {
     xhttp.open("GET", file, true);
     xhttp.send();
 }
-function del_button() {
-    var deliveryIns = document.getElementById("del-ins-text");
-    var y = deliveryIns.style.display = 'block';
-    deliveryIns.classList.toggle(y);
+function del_button(id) {
+    var z;
+
+    if (id == "ins-btn") {
+        z = "del-ins-text";
+    } else if (id == "cash") {
+        z = "cash-display";
+    } else if (id == "card") {
+        z = "credit-display";
+    }
+    var x = document.getElementById(z);
+    var y = x.style.display = 'block';
+    x.classList.toggle(y);
+
+
+
 }
 window.onload = checkout();
