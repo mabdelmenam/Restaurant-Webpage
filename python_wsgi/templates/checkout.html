@@ -47,12 +47,31 @@
             <h3 class="titles">Payment Information</h3>
             <button id="cash" class="payment-btns" onclick='del_button(id)'>Cash</button>
             <button id="card" class="payment-btns" style="margin-left:20px;" onclick='del_button(id)'>Credit/Debit Card</button>
+            <div id="display"></div>
             <div style="display:none" id="cash-display">
                 <i id="check" class="fas fa-check-circle"></i>
                 <h4 style="display:inline-block; font-size:14px;">Pay the delivery driver cash upon food arrival.</h4>
+                <h4 style="margin-top:-5px;font-size:14px;">Drop a tip for the driver with cash!</h4>
             </div>
             <div style="display:none" id="credit-display">
-                <p>credit</p>
+                <div class="error" id="cardnum-error"></div>
+                <input type="text" style="padding-right: 30px;" id="cardnum" placeholder="Card Number" required />
+
+                <span class="error" id="expiration-error"></span>
+                <input type="text" id="expiration" placeholder="Expiration" required />
+
+                <span class="error" id="code-error"></span>
+                <input type="text" id="code" placeholder="Code" required />
+
+                <h4 style="font-size:14px;">Drop a tip for the driver!</h4>
+                <button id="tip0" class="tips">15%</button>
+                <button id="tip1" class="tips">20%</button>
+                <button id="tip2" class="tips">25%</button>
+                <button id="tip3" class="tips">30%</button>
+
+                <h4 id="custom-tip-text">Custom Tip: </h4>
+                <input type="text" id="custom-tip" placeholder="Enter any amount" required />
+
             </div>
         </div>
     </div>

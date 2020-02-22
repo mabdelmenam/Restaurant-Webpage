@@ -1,5 +1,5 @@
 function checkout() {
-    //AJAX PORTION
+    // AJAX PORTION
     var file = "http://localhost:8000/json_test";
     var xhttp = new XMLHttpRequest();
 
@@ -20,20 +20,21 @@ function checkout() {
     xhttp.send();
 }
 function del_button(id) {
+
     var z;
+    var display = document.getElementById('display');
+    var cash_display = document.getElementById('cash-display');
+    var credit_display = document.getElementById('credit-display');
 
     if (id == "ins-btn") {
         z = "del-ins-text";
+        var x = document.getElementById(z);
+        var y = x.style.display = 'block';
+        x.classList.toggle(y);
     } else if (id == "cash") {
-        z = "cash-display";
+        display.innerHTML = cash_display.innerHTML;
     } else if (id == "card") {
-        z = "credit-display";
+        display.innerHTML = credit_display.innerHTML;
     }
-    var x = document.getElementById(z);
-    var y = x.style.display = 'block';
-    x.classList.toggle(y);
-
-
-
 }
 window.onload = checkout();
