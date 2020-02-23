@@ -65,22 +65,3 @@ function logout() {
   xhttp.withCredentials = true;
   xhttp.send(null);
 }
-
-
-/*window.onload = (function check_UserActivity() {
-  var file = "http://localhost:8000/check_session";
-  var xhttp = new XMLHttpRequest();
-
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      console.log('MENU RESPONSE TEXT: ', this.responseText);
-      // var session_active = JSON.parse(this.responseText);
-      //if(session_active == 1){
-      //remove login button and show logout button, or just show logout button
-      // }
-    }
-  };
-  xhttp.open("GET", file, true);
-  xhttp.withCredentials = true;
-  xhttp.send(null);
-})*/

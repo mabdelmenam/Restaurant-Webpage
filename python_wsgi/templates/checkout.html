@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="http://localhost:8000/static/css/checkout.css" />
     <link rel="stylesheet" href="http://localhost:8000/static/css/design.css" />
-    <link rel="stylesheet" href="http://localhost:8000/static/css/menu.css" />
 
     <script async src="https://kit.fontawesome.com/dbb9f1c4b3.js"></script>
     <script async src="http://localhost:8000/static/js/checkout.js"></script>
@@ -29,16 +28,44 @@
         <h3 style="margin-bottom:5px;">Review and Place Order</h3>
         <h5 style="font-size:15px;margin-bottom:3%;">Review all your information and order details</h5>
     </div>
+
+
+    <div id="food_details">
+        <table id="final-table">
+            {% for col in data %}
+            {% if col.1 is not none %}
+            <tr>
+                <td>{{col.0}}</td>
+                <td style="color:black">{{col.1}}</td>
+                <td>{{col.2}}</td>
+            </tr>
+            <tr>
+                <td id='no-line' colspan='4'>{{col.3}}</td>
+                <td id='no-line'></td> <!-- required to make line seperations between rows-->
+                <td id='no-line'></td>
+                <td id='no-line'></td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
+        <h5 style="display:inline-block;">Items Subtotal:</h5>
+        <h5 style="float:right;margin-right:23.5%;" id="subtotal-value">{{subtotal}}</h5>
+        <div></div>
+        <h5 style="display:inline-block;">Tax:</h5>
+        <h5 style="float:right;margin-right:23.5%;" id="tax-value">{{tax}}</h5>
+
+    </div>
+
     <div id="order-details">
         <h3 class="titles">Order Details</h3>
         {% for i in info %}
-        <h4 id="info" style="display:inline-block; margin-bottom:0;">{{i.0}}</h4>
-        <h4 id="info" style="display:inline-block; margin-bottom:0">{{i.1}}</h4>
-        <h4 id="info">{{i.2}}</h4>
-        <h4 id="info">{{i.3}}</h4>
-        <h4 id="info">{{i.4}}</h4>
+        <h4 class="user_info" style="display:inline-block; margin-bottom:0;">{{i.0}}</h4>
+        <h4 class="user_info" style="display:inline-block; margin-bottom:0">{{i.1}}</h4>
+        <h4 class="user_info">{{i.2}}</h4>
+        <h4 class="user_info">{{i.3}}</h4>
+        <h4 class="user_info">{{i.4}}</h4>
         {% endfor %}
-        <button id="ins-btn" onclick='del_button(id)'><i class="fa fa-plus"></i></button>
+        <button style="cursor:pointer;" id="ins-btn" onclick='del_button(id)'><i class="fa fa-plus"></i></button>
         <h4 id="del-ins">Add Delivery Instructions</h4>
         <textarea id="del-ins-text" placeholder="Delivery Instructions"></textarea>
 
@@ -48,6 +75,7 @@
             <button id="cash" class="payment-btns" onclick='del_button(id)'>Cash</button>
             <button id="card" class="payment-btns" style="margin-left:20px;" onclick='del_button(id)'>Credit/Debit Card</button>
             <div id="display"></div>
+            <div id="seperator"></div>
             <div style="display:none" id="cash-display">
                 <i id="check" class="fas fa-check-circle"></i>
                 <h4 style="display:inline-block; font-size:14px;">Pay the delivery driver cash upon food arrival.</h4>
@@ -64,16 +92,21 @@
                 <input type="text" id="code" placeholder="Code" required />
 
                 <h4 style="font-size:14px;">Drop a tip for the driver!</h4>
-                <button id="tip0" class="tips">15%</button>
-                <button id="tip1" class="tips">20%</button>
-                <button id="tip2" class="tips">25%</button>
-                <button id="tip3" class="tips">30%</button>
+                <button id="tip0" value=0.15 class="tips" onclick='send_Tips(value)'>15%</button>
+                <button id="tip1" value=0.20 class="tips" onclick='send_Tips(value)'>20%</button>
+                <button id="tip2" value=0.25 class="tips" onclick='send_Tips(value)'>25%</button>
+                <button id="tip3" value=0.30 class="tips" onclick='send_Tips(value)'>30%</button>
+
 
                 <h4 id="custom-tip-text">Custom Tip: </h4>
-                <input type="text" id="custom-tip" placeholder="Enter any amount" required />
+
+                <input type="text" id="custom-tip" placeholder="Enter any amount" />
+                <div id="custom-err" style="display:inline-block"></div>
+                <button id="custom-tip-btn" class="tips" onclick="send_Tips(id)">Add</button>
 
             </div>
         </div>
+        <button id="checkout-btn">Checkout</button>
     </div>
 
 </body>

@@ -158,3 +158,87 @@ input[type="text"],{
   margin-right: 20%;
   margin-top: 10px;
 }
+/*BAG CSS*/
+#shopping-bag{
+  font-size: 20px;
+  text-decoration: none;
+  float: right;
+  margin-top: -78.5px;
+  margin-right:20px;
+  border: 2.5px solid rgb(70, 95, 112);
+  border-radius: 25px;
+  padding: 10px;
+}
+#shopping-bag:hover{
+  transition: 0.4s;
+  cursor: pointer;
+  border: 2.5px solid rgb(0, 0, 0)
+}
+#shopping-bag:active{
+  background-color: gray;
+}
+/*END BAG CSS*/
+/*DROPDOWN*/
+#dropdown-content{
+  display: none;
+  float:right;
+  border-radius: 15px;
+  padding-left: 10px;
+  background-color: white;
+  font-size: 13.5px;
+  font-family: Georgia;
+  height: auto;
+  width: 15%;
+  color: black;
+
+  -webkit-transition: opacity 2.0s ease-in;
+}
+#dropdown-title{
+  display:block;
+  padding-top: 15px;
+  border-bottom: 1.5px solid black;
+  padding-bottom: 5px;
+}
+table{
+  max-width: 20%;
+  border-collapse: collapse;
+  table-layout:fixed;
+}
+#line-under-table{
+  border-bottom: 1.5px solid black;
+  padding-bottom: 5px;
+}
+th, #no-line{
+  border-bottom: 3px solid #4700ff;
+  font-size: 11px;
+  padding-bottom: 7px;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+tr td:not(:first-child){
+  max-width:125px;
+  padding-left:20px;
+   word-wrap:break-word; 
+}
+#dropdown-subtotal{
+  display:inline-block;
+  padding-right:25%;
+  margin-bottom: -5%;
+}
+#dropdown-btn{
+    font-size: 13.5px;
+    color: black;
+    font-weight: bold;
+    font-family: Georgia;
+    text-decoration: none;
+    border: 2.5px solid #525252;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left:15%;
+    margin-top:3%;
+    margin-bottom: 2%;
+}
+#dropdown-btn:hover{
+  cursor: pointer;
+}
+/*END DROPDOWN*/

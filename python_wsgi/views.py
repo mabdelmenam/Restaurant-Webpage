@@ -165,6 +165,36 @@ def food_database():
 
         return render_template('menu.html', data = data, subtotal = subtotalFinal)
 
+@app.route('/final_details', methods=['GET','POST']) #Checkout Page
+def final_details():
+    if request.method == 'POST':
+        req_data = request.get_json()
+        print(req_data, file=sys.stderr)
+        return "OKAY"
+
+    elif request.method == 'GET':
+        cur = my_mysql.connection.cursor()
+        cur.execute("SELECT * FROM foodorder")
+        data = cur.fetchall()
+
+        cur.execute("SELECT sum(price) from foodorder")
+        subtotal = cur.fetchall()
+        subtotal2 = float(subtotal[0][0]) # float
+        subtotalFinal = format(subtotal2, '.2f') #string
+
+        tax = subtotal2 * 0.06625 #tax float
+        taxString = format(tax,'.2f') # tax string
+        subwithTax = (tax) + subtotal2 #sum of subtotal and  tax
+        #if user picks a 15% tip, the tip = 0.15 % subwithTax 
+        #total = tip + subwithTax
+
+
+        #print(subtotalInt, file=sys.stderr)
+        my_mysql.connection.commit()
+        cur.close()
+
+        return render_template('checkout.html', data = data, subtotal = subtotalFinal, tax = taxString)
+
 @app.route('/check_session', methods=['GET'])
 def check_session():
     isvalid = {}
