@@ -24,3 +24,15 @@ CREATE TABLE foodOrder
     instructions VARCHAR(300),
     subtotal VARCHAR(7)
 );
+
+CREATE TABLE paymentOrderInfo
+(
+
+    cardnum INT(16),
+    expiration INT(4),
+    cvv INT(3),
+    tip VARCHAR(7),
+    total VARCHAR(7),
+    instructions VARCHAR(300)
+
+)

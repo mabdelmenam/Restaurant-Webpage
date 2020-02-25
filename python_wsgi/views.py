@@ -213,3 +213,7 @@ def drop_session():
     session.clear()
     session['logged_in'] = False
     return redirect(url_for('loginPage'))
+
+@app.route('/visual_change', methods=['GET'])
+def visual_change():
+    return 'nothing'

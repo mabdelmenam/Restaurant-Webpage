@@ -69,6 +69,11 @@ input[type="text"]{
     border-color: #4700ff;
     border-width: medium;
 }
+.error{
+    font-family: Rockwell;
+    color: red;
+    font-size: 12.5px;
+}
 #expiration, #code{
     margin-left: 25px;
 }

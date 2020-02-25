@@ -45,39 +45,6 @@ function food_details() {
     xhttp.open("GET", file, true);
     xhttp.send();
 }
-function send_Tips(x) {
-    if (x == "custom-tip-btn") {
-        var custom_btn = document.getElementById('custom-tip-btn');
-        var custom_err = document.getElementById('custom-err');
-        var custom_tip = document.getElementById('custom-tip');
-        custom_tip.addEventListener("keyup", function () {
-            if (custom_tip.value == typeof (int) || custom_tip.value == typeof (float)) {
-                custom_btn.disabled = false;
-            }
-            else if (custom_tip.value == "" || custom_tip.value == " ") {
-                custom_err.innerHTML = 'Do not leave blank';
-                custom_btn.disabled = true;
-            }
-            else if (x != typeof (int)) {
-                custom_err.innerHTML = 'Only enter an integer';
-                custom_btn.disabled = true;
-            }
-            x = custom_tip.value
-        });
-    }
-    var file = "http://localhost:8000/final_details";
-    var xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText)
-        }
-    };
-
-    xhttp.open("POST", file, true);
-    xhttp.setRequestHeader("Content-Type", "application/json");
-    xhttp.send(x);
-}
 function del_button(id) {
 
     var z;

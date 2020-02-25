@@ -12,6 +12,7 @@
 
     <script async src="https://kit.fontawesome.com/dbb9f1c4b3.js"></script>
     <script async src="http://localhost:8000/static/js/checkout.js"></script>
+    <script async src="http://localhost:8000/static/js/sendOrder.js"></script>
     <script async src="http://localhost:8000/static/js/login.js"></script>
 </head>
 
@@ -53,6 +54,12 @@
         <div></div>
         <h5 style="display:inline-block;">Tax:</h5>
         <h5 style="float:right;margin-right:23.5%;" id="tax-value">{{tax}}</h5>
+        <div></div>
+        <h5 style="display:inline-block;">Tip:</h5>
+        <h5 style="float:right;margin-right:23.5%;" id="tip-value"></h5>
+        <div></div>
+        <h5 style="display:inline-block;color:red;">Total:</h5>
+        <h5 style="float:right;margin-right:23.5%;color:red;" id="total-value"></h5>
 
     </div>
 
@@ -83,13 +90,14 @@
             </div>
             <div style="display:none" id="credit-display">
                 <div class="error" id="cardnum-error"></div>
-                <input type="text" style="padding-right: 30px;" id="cardnum" placeholder="Card Number" required />
+                <input type="text" style="padding-right: 30px;" id="cardnum" placeholder="Card Number" onkeyup='cardInfo(id)'
+                    required />
 
                 <span class="error" id="expiration-error"></span>
-                <input type="text" id="expiration" placeholder="Expiration" required />
+                <input type="text" id="expiration" placeholder="Expiration" onkeyup='cardInfo(id)' required />
 
                 <span class="error" id="code-error"></span>
-                <input type="text" id="code" placeholder="Code" required />
+                <input type="text" id="code" placeholder="Code" onkeyup='cardInfo(id)' required />
 
                 <h4 style="font-size:14px;">Drop a tip for the driver!</h4>
                 <button id="tip0" value=0.15 class="tips" onclick='send_Tips(value)'>15%</button>
@@ -100,9 +108,9 @@
 
                 <h4 id="custom-tip-text">Custom Tip: </h4>
 
-                <input type="text" id="custom-tip" placeholder="Enter any amount" />
+                <input type="text" id="custom-tip" placeholder="Enter any amount" onkeyup='customTip()' />
                 <div id="custom-err" style="display:inline-block"></div>
-                <button id="custom-tip-btn" class="tips" onclick="send_Tips(id)">Add</button>
+                <button id="custom-tip-btn" class="tips" onclick="send_Tips(id)" disabled>Add</button>
 
             </div>
         </div>
