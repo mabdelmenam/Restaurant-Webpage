@@ -55,7 +55,7 @@
         <h5 style="display:inline-block;">Tax:</h5>
         <h5 style="float:right;margin-right:23.5%;" id="tax-value">{{tax}}</h5>
         <div></div>
-        <h5 style="display:inline-block;">Tip:</h5>
+        <h5 style="display:inline-block;" id="tip-title">Tip:</h5>
         <h5 style="float:right;margin-right:23.5%;" id="tip-value"></h5>
         <div></div>
         <h5 style="display:inline-block;color:red;">Total:</h5>
@@ -114,7 +114,7 @@
 
             </div>
         </div>
-        <button id="checkout-btn">Checkout</button>
+        <button id="checkout-btn" onclick="paymentFinal()" disabled>Checkout</button>
     </div>
 
 </body>

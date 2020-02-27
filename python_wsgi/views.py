@@ -169,8 +169,25 @@ def food_database():
 def final_details():
     if request.method == 'POST':
         req_data = request.get_json()
+        cur = my_mysql.connection.cursor()
+
+        cardnum = req_data['cardnum']
+        hashed_cardnum = pbkdf2_sha256.hash(cardnum)
+
+        expiration = req_data['expiration']
+        code = req_data['code']
+        tip = req_data['tip']
+        total = req_data['total']
+        instructions = req_data['ins']
+        
+        cur.execute("INSERT INTO paymentorderinfo(cardnum, expiration, cvv, tip, total, instructions) VALUES(%s, %s, %s, %s, %s, %s)",
+                    (hashed_cardnum, expiration, code, tip, total, instructions))
+
+        my_mysql.connection.commit()
+        cur.close()
+
         print(req_data, file=sys.stderr)
-        return "OKAY"
+        return render_template('order_complete.html')
 
     elif request.method == 'GET':
         cur = my_mysql.connection.cursor()
@@ -186,8 +203,6 @@ def final_details():
         taxString = format(tax,'.2f') # tax string
         subwithTax = (tax) + subtotal2 #sum of subtotal and  tax
         #if user picks a 15% tip, the tip = 0.15 % subwithTax 
-        #total = tip + subwithTax
-
 
         #print(subtotalInt, file=sys.stderr)
         my_mysql.connection.commit()

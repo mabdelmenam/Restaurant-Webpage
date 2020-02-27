@@ -52,6 +52,9 @@ function del_button(id) {
     var cash_display = document.getElementById('cash-display');
     var credit_display = document.getElementById('credit-display');
 
+    var tip = document.getElementById("tip-title");
+    var tip_value = document.getElementById('tip-value');
+
     if (id == "ins-btn") {
         z = "del-ins-text";
         var x = document.getElementById(z);
@@ -59,8 +62,16 @@ function del_button(id) {
         x.classList.toggle(y);
     } else if (id == "cash") {
         display.innerHTML = cash_display.innerHTML;
+        tip.style.display = 'none'; // Making the tip display in the total values not appear since a tip would be given cash
+        tip_value.style.display = 'none';
+
+        send_Tips(0); //call the ajax function with the tip set as ' 0 ' so it would by default send back the subtotal and tax
+
+
     } else if (id == "card") {
         display.innerHTML = credit_display.innerHTML;
+        tip.style.display = 'inline-block';
+        tip_value.style.display = 'block';
     }
 }
 window.onload = checkout();
