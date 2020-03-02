@@ -1,4 +1,5 @@
 from main_app import app, my_mysql
+from emailSend import test
 
 from flask import Flask, request, jsonify, session, redirect, url_for, render_template
 from passlib.hash import pbkdf2_sha256
@@ -36,13 +37,18 @@ def entrees():
 
 @app.route('/checkout')#Checkout Page
 def checkout():
-    return render_template('checkout.html')
+    if session.get("checkout_period"):
+        return render_template('checkout.html')#if checkout session tru go to checkout page, else go back to menu.html
+    return render_template('menu.html')
+
+@app.route('/order_complete') #ORDER COMPLETE
+def order_complete():
+    return render_template('order_complete.html')
 
 @app.route('/loginPage')#Login Page
 def loginPage():
     if session.get("logged_in"):
-        if session["logged_in"] == True:
-            return render_template('index.html')
+        return render_template('index.html')
     return render_template('loginPage.html')
 
 @app.route('/signup') #Signup Page
@@ -137,8 +143,8 @@ def food_database():
         quantity = req_data['quantity']
         instructions = req_data['food_instructions']
 
-        cur.execute("INSERT INTO foodorder(quantity, foodName, price, instructions) VALUES(%s, %s, %s, %s)",
-                    (quantity, foodName, price, instructions))
+        cur.execute("INSERT INTO foodorder(username, quantity, foodName, price, instructions) VALUES(%s, %s, %s, %s, %s)",
+                    ([session.get('username')], quantity, foodName, price, instructions))
 
         #cur.execute("INSERT INTO foodorder(subtotal) VALUES(%s)", (subtotal))
         
@@ -149,17 +155,18 @@ def food_database():
         print(req_data, file=sys.stderr)
 
         return 'Working...'
-    elif request.method == 'GET':
+    elif request.method == 'GET': #DISPLAY IN SHOPPING BAG
         cur = my_mysql.connection.cursor()
-        cur.execute("SELECT * FROM foodorder")
+        cur.execute("SELECT * FROM foodorder WHERE username=%s", [session.get('username')])
         data = cur.fetchall()
 
-        cur.execute("SELECT sum(price) from foodorder")
+        cur.execute("SELECT sum(price) from foodorder WHERE username=%s", [session.get('username')]) 
         subtotal = cur.fetchall()
         subtotal2 = float(subtotal[0][0])
         subtotalFinal = format(subtotal2, '.2f')
 
-        #print(subtotalInt, file=sys.stderr)
+        session['checkout_period'] = True #Session to give access to checkout page, active when clicking on the shopping icon
+
         my_mysql.connection.commit()
         cur.close()
 
@@ -176,31 +183,35 @@ def final_details():
 
         expiration = req_data['expiration']
         code = req_data['code']
+        subtotal = req_data['subtotal']
+        tax = req_data['tax']
         tip = req_data['tip']
         total = req_data['total']
         instructions = req_data['ins']
         
-        cur.execute("INSERT INTO paymentorderinfo(cardnum, expiration, cvv, tip, total, instructions) VALUES(%s, %s, %s, %s, %s, %s)",
-                    (hashed_cardnum, expiration, code, tip, total, instructions))
+        cur.execute("INSERT INTO paymentorderinfo(username,cardnum, expiration, cvv, subtotal, tax,  tip, total, instructions) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+                    ([session.get('username')], hashed_cardnum, expiration, code, subtotal, tax, tip, total, instructions))#***ALIGN WITH USER, CREATE USER COLUMN***
 
+        session['checkout_period'] = False
         my_mysql.connection.commit()
         cur.close()
 
         print(req_data, file=sys.stderr)
-        return render_template('order_complete.html')
+        test()
+        return redirect(url_for('order_complete'))
 
     elif request.method == 'GET':
         cur = my_mysql.connection.cursor()
-        cur.execute("SELECT * FROM foodorder")
+        cur.execute("SELECT * FROM foodorder WHERE username=%s", [session.get('username')])
         data = cur.fetchall()
 
-        cur.execute("SELECT sum(price) from foodorder")
+        cur.execute("SELECT sum(price) from foodorder WHERE username=%s", [session.get('username')])
         subtotal = cur.fetchall()
         subtotal2 = float(subtotal[0][0]) # float
-        subtotalFinal = format(subtotal2, '.2f') #string
+        subtotalFinal = format(subtotal2, '.2f') #string   ****STORE INTO paymentorderinfo*****
 
         tax = subtotal2 * 0.06625 #tax float
-        taxString = format(tax,'.2f') # tax string
+        taxString = format(tax,'.2f') # tax string              ****STORE INTO paymentorderinfo*****
         subwithTax = (tax) + subtotal2 #sum of subtotal and  tax
         #if user picks a 15% tip, the tip = 0.15 % subwithTax 
 
