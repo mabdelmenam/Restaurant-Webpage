@@ -54,6 +54,7 @@ function del_button(id) {
 
     var tip = document.getElementById("tip-title");
     var tip_value = document.getElementById('tip-value');
+    var checkout_btn = document.getElementById('checkout-btn');
 
     if (id == "ins-btn") {
         z = "del-ins-text";
@@ -66,6 +67,7 @@ function del_button(id) {
         tip_value.style.display = 'none';
 
         send_Tips(0); //call the ajax function with the tip set as ' 0 ' so it would by default send back the subtotal and tax
+        checkout_btn.disabled = false;
 
 
     } else if (id == "card") {

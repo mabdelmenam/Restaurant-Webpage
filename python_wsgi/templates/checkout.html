@@ -32,21 +32,19 @@
 
 
     <div id="food_details">
-        <table id="final-table">
+        <table id="final-table" style="width:100%">
             {% for col in data %}
-            {% if col.1 is not none %}
             <tr>
-                <td>{{col.0}}</td>
-                <td style="color:black">{{col.1}}</td>
-                <td>{{col.2}}</td>
+                <td>{{col.1}}</td>
+                <td style="color:black; padding-left:20px;">{{col.2}}</td>
+                <td style="padding-left: 34%;">{{col.3}}</td>
             </tr>
             <tr>
-                <td id='no-line' colspan='4'>{{col.3}}</td>
+                <td id='no-line' colspan='4'>{{col.4}}</td>
                 <td id='no-line'></td> <!-- required to make line seperations between rows-->
                 <td id='no-line'></td>
                 <td id='no-line'></td>
             </tr>
-            {% endif %}
             {% endfor %}
         </table>
         <h5 style="display:inline-block;">Items Subtotal:</h5>

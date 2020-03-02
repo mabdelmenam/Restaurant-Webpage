@@ -107,12 +107,14 @@ function send_Tips(x) { //function for calculating subtotal, tax, tip, and total
     xhttp.send();
 }
 /**--------------------------------------------------------------------------------------------------------------------------------- */
+//Function used to store order data in ' paymentorderinfo ' table and redirect to "Order Complete" page
 function paymentFinal() {
-    console.log(deliveryTips);
     var cardnum = document.getElementById('cardnum');
     var expiration = document.getElementById('expiration');
     var code = document.getElementById('code');
     var instruction = document.getElementById('del-ins-text');
+    var subtotal = document.getElementById('subtotal-value');
+    var tax = document.getElementById('tax-value');
     var total = document.getElementById('total-value');
 
     var file = "http://localhost:8000/final_details";
@@ -122,6 +124,8 @@ function paymentFinal() {
         cardnum: cardnum.value,
         expiration: expiration.value,
         code: code.value,
+        tax: tax.innerHTML,
+        subtotal: subtotal.innerHTML,
         total: total.innerHTML,
         ins: instruction.value
     };
@@ -132,6 +136,7 @@ function paymentFinal() {
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+            window.location = "http://localhost:8000/order_complete";
         }
     };
 

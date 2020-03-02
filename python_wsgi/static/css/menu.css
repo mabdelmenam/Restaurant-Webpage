@@ -200,7 +200,6 @@ input[type="text"],{
   padding-bottom: 5px;
 }
 table{
-  max-width: 20%;
   border-collapse: collapse;
   table-layout:fixed;
 }
@@ -216,8 +215,7 @@ th, #no-line{
   padding-left: 20px;
 }
 tr td:not(:first-child){
-  max-width:125px;
-  padding-left:20px;
+  padding-left:10px;
    word-wrap:break-word; 
 }
 #dropdown-subtotal{

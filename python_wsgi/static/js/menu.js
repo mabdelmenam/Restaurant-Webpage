@@ -16,7 +16,7 @@ function loadCategory(currentDiv, file) {
       window.onload = plusButton();
       setTimeout(function () { //setting a timer waiting for plusButton to completely finish
         window.onload = food();
-      }, 400);
+      }, 100);
       document.getElementById(currentDiv).innerHTML = xhttp.responseText;
     }
   };
@@ -96,7 +96,7 @@ function food() {
         }
       })();
     }
-  }, 50);
+  }, 400);
 }
 //modal functionality
 closebtn.onclick = function () {

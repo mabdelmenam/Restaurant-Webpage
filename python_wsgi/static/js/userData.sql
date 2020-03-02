@@ -18,21 +18,23 @@ CREATE TABLE users
 
 CREATE TABLE foodOrder
 (
+    username VARCHAR(16),
     quantity VARCHAR(3),
     foodName VARCHAR(25),
     price VARCHAR(7),
-    instructions VARCHAR(300),
-    subtotal VARCHAR(7)
+    instructions VARCHAR(300)
 );
 
 CREATE TABLE paymentOrderInfo
 (
-
-    cardnum INT(16),
-    expiration INT(4),
-    cvv INT(3),
+    username VARCHAR(16),
+    cardnum CHAR(100),
+    expiration VARCHAR(4),
+    cvv VARCHAR(3),
+    subtotal VARCHAR(7),
+    tax VARCHAR(7),
     tip VARCHAR(7),
     total VARCHAR(7),
     instructions VARCHAR(300)
 
-)
+);

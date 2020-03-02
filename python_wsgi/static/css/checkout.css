@@ -120,11 +120,12 @@ input[type="text"]{
     float:right;
     font-family:Verdana;
     background:white;
+    width: 35%;
 }
 table{
     
     border-collapse: collapse;
-    table-layout:fixed;
+    /* table-layout:fixed; */
   }
   #line-under-table{
     border-bottom: 2px solid black;
@@ -137,3 +138,9 @@ table{
     padding-top: 10px;
     padding-left: 20px;
   }
+  /*
+  
+td:not(:nth-child(1)):not(:nth-child(3)){
+  padding-right:50%;
+}
+  */
