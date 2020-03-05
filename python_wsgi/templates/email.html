@@ -1,0 +1,58 @@
+<html>
+
+<body>
+
+    <h3 style="font-size:22px; color:black;">Thank You, your order is on the way!</h3>
+    <div id="wrapper" style="width: 700px; margin: 0 auto; font-family: Verdana; text-align: center;">
+        <div id="main" style="
+    margin-left: 20px;">
+            <div style="text-align: center; font-size:17px; color: black;">
+                <h5>{{firstName}} {{lastName}}</h5>
+                <h5>{{home_address}}</h5>
+                <h5>{{zipcode}}</h5>
+                <h5>{{pnumber}}</h5>
+                <h5 style="color:red; font-weight: bold; font-size: 16px;">__________________________________</h5>
+                <h5 style="font-size: 15px; display:inline-block;">Special Instructions: </h5>
+                <h5 style="font-size:15px;font-style:oblique;">{{deliveryIns}}</h5>
+                <h5 style="color:red; font-weight: bold; font-size: 16px;">__________________________________</h5>
+            </div>
+        </div>
+
+        <div id="food-details">
+            <table style="
+            border: 1px solid black;
+            color: black;
+            font-size:17px;
+            margin: 0 auto;
+            ">
+                <tr>
+                    <th>Quantity</th>
+                    <th>Food</th>
+                    <th>Price</th>
+                    <th>Instructions</th>
+                </tr>
+                {% for i in quantity %}
+                <tr>
+                    <td style="
+                    border: 1px solid black;">{{quantity[loop.index0]}}</td>
+                    <td style="
+                    border: 1px solid black;"> {{foodName[loop.index0]}}</td>
+                    <td style="
+                    border: 1px solid black;">{{price[loop.index0]}}</td>
+                    <td style="
+                    border: 1px solid black;">{{foodIns[loop.index0]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div id="numbers" style="font-size:17px; font-weight:bold; color: black;">
+                <h5>Subtotal: {{subtotal}}</h5>
+                <h5>Tax: {{tax}}</h5>
+                <h5>Tip: {{tip}}</h5>
+                <h5>Total: {{total}}</h5>
+            </div>
+            <h5 style="color:red; font-weight: bold; font-size: 16px; text-align: center;">_______________________________________</h5>
+        </div>
+    </div>
+</body>
+
+</html>

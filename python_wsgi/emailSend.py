@@ -1,21 +1,26 @@
 import smtplib, ssl
 from main_app import app, my_mysql
-from flask import Flask, session
+from flask import Flask, session, render_template
 
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import jinja2
+from jinja2 import Environment, FileSystemLoader
 
-import sys
+import sys, os
 
 def test():
     port = 465 # For SSL
     smtp_server = "smtp.gmail.com"
     sender_email = "mabdelmenam511@gmail.com"
     password = 'V%>h8$U4?4B{.cB9PzR"tDA8Zs<#V+E9~:{jS[[C'
+
     message = MIMEMultipart('alternative')
-    
     message["From"] = sender_email
-    message["Subject"] = "McGrub Delivery"
+    message["Subject"] = "McGrub Delivery" 
+
+    env = Environment(
+    loader=FileSystemLoader('%s/templates/' % os.path.dirname(__file__)))
 
     cur = my_mysql.connection.cursor()
     cur.execute("SELECT firstName,lastName,home_address,zipcode,pnumber,email  FROM users WHERE username=%s", [session.get('username')])
@@ -60,38 +65,10 @@ def test():
     text = '''
     This is a message.
     '''
-    html = '''
-    <html>
-    <body>
-    <h3>Thank You, your order is on the way!</h3>
-    <div style="float:right;">
-        <table>
-            <tr>
-                <td>{} {}</td>
-                <td>{}</td>
-                <td>{}</td>
-                <td>{}</td>
-                <td><!--LINE SEPERATION--></td>
-                <td>{}</td>
-            </tr>
-        </table>
-    </div>
 
-    <div id="food-details">
-        <table>
-            <!--
-            for index, i in enumerate(quantity):
-        print(quantity[index], "\n", foodName[index], "\n", price[index], "\n", foodInstructions[index], file=sys.stderr)
-        -->
-        </table>
-        <h5>Subtotal: {}</h5>
-        <h5>Tax: {}</h5>
-        <h5>Tip: {}</h5>
-        <h5>Total: {}</h5>
-    </div>
-    </body>
-    </html>
-    '''.format(firstName,lastName, home_address, zipcode, pnumber, deliveryInstructions, subtotal, tax, tip, total)
+    html = render_template('email.html', firstName=firstName, lastName=lastName, home_address=home_address, zipcode=zipcode,
+    pnumber=pnumber, quantity=quantity, foodName=foodName, price=price, foodIns=foodInstructions, subtotal=subtotal, tax=tax,
+    tip=tip, total=total, deliveryIns=deliveryInstructions)
 
     part1 = MIMEText(text, "plain")
     part2 = MIMEText(html, "html")
@@ -99,7 +76,7 @@ def test():
     message.attach(part1)
     message.attach(part2)
 
-    print("TOLO", file=sys.stderr)
+    print(session.get('username'), file=sys.stderr)
     #---------------------------------#
 
     #Create a secure SSL context
