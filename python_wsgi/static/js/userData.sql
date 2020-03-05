@@ -27,14 +27,25 @@ CREATE TABLE foodOrder
 
 CREATE TABLE paymentOrderInfo
 (
+    /*  id int NOT NULL
+    AUTO_INCREMENT,*/
     username VARCHAR(16),
-    cardnum CHAR(100),
-    expiration VARCHAR(4),
-    cvv VARCHAR(3),
-    subtotal VARCHAR(7),
-    tax VARCHAR(7),
-    tip VARCHAR(7),
-    total VARCHAR(7),
-    instructions VARCHAR(300)
-
+    cardnum CHAR
+    100),
+    expiration VARCHAR
+    (4),
+    cvv VARCHAR
+    (3),
+    subtotal VARCHAR
+    (7),
+    tax VARCHAR
+    (7),
+    tip VARCHAR
+    (7),
+    total VARCHAR
+    (7),
+    instructions VARCHAR
+    (300),
+    PRIMARY KEY
+    (id)
 );
