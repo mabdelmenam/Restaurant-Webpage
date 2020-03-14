@@ -53,6 +53,7 @@ div {
   text-align: center;
   font-size: 17px;
   font-family: Georgia, serif;
+  margin-bottom: 220px;
 } /*mainly formatting the <p> tags, but will generalize*/
 /* start Styling for <p> tags*/
 .food-heading {
@@ -90,6 +91,7 @@ div {
   height: 100%;
   top: 0;
   left: 0;
+  margin-bottom: 205px;
   background-color: rgba(0,0,0,0.8);
 }
 .modal-content {
@@ -207,7 +209,7 @@ table{
   border-bottom: 1.5px solid black;
   padding-bottom: 5px;
 }
-th, #no-line{
+th, .no-line{
   border-bottom: 3px solid #4700ff;
   font-size: 11px;
   padding-bottom: 7px;
