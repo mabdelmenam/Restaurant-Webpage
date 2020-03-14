@@ -44,11 +44,12 @@ def test():
     price = []
     foodInstructions = []
     for index, row in enumerate(food): #Food Data
-        quantity.append(food[index][1])
-        foodName.append(food[index][2])
-        price.append(food[index][3])
-        foodInstructions.append(food[index][4])
+        quantity.append(food[index][2])
+        foodName.append(food[index][3])
+        price.append(food[index][4])
+        foodInstructions.append(food[index][5])
 
+    print(food, file=sys.stderr)
     cur.execute("SELECT subtotal,tax,tip,total,instructions FROM paymentorderinfo ORDER BY id DESC LIMIT 1")
     order = cur.fetchall()
 

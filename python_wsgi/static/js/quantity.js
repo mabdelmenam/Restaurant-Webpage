@@ -3,6 +3,7 @@ var counter = 0;
 var num2 = 0;
 function foodQuantity(id) {
     var quantity = document.getElementById("quantity");
+    var add_button = document.getElementById("add-button");
     //console.log("num in quanitty: ", num);
     if (id == "quantity-plus") {
         counter++;
@@ -21,6 +22,11 @@ function foodQuantity(id) {
         }
     }
     quantity.innerHTML = counter;
+    if (counter > 0) {
+        add_button.disabled = false;
+    } else {
+        add_button.disabled = true;
+    }
     console.log(num2);
 }
 
@@ -84,14 +90,64 @@ function dropdown() {
             var tds = xmlDoc.getElementById('dropdown-table');
 
             var subtotalValue = xmlDoc.getElementById('subtotal-value');
-            console.log(subtotalValue)
+            //console.log(subtotalValue)
             table.innerHTML = tds.innerHTML;
             subtotal.innerHTML = subtotalValue.innerHTML;
-            console.log('After: ', table.innerHTML);
+            //console.log('After: ', table.innerHTML);
         }
     };
 
     xhttp.open("GET", file, true);
     xhttp.send();
 
+}
+
+function deleteFood(rowClient, rowID) {
+    data = JSON.stringify(rowID);
+    var file = "http://localhost:8000/visual_change";
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var subtotal = document.getElementById('subtotal-value');
+            var singlePrice = document.getElementById(`single-price-${rowID}`);
+
+            deleteR(rowClient); //deleting row clicked on, display only ----> data variable will be deleted in backend SQL
+            var x = document.getElementById(rowID);
+            if (x == null) {
+                return;
+            }
+            x.onclick(); // deleting the second row with the description
+
+            subtotal.innerHTML = (parseFloat(subtotal.innerHTML) - parseFloat(singlePrice.innerHTML)).toFixed(2);
+
+        }
+    };
+
+    xhttp.open("POST", file, true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(data);
+
+}
+/************************************************************************************************************ */
+// Helper function:
+function upTo(el, tagName) {
+    tagName = tagName.toLowerCase();
+
+    //console.log("ELEMENT: ", el, "\nPARENT NODE: ", el.parentNode);
+
+    while (el && el.parentNode) {
+        el = el.parentNode;
+        if (el.tagName && el.tagName.toLowerCase() == tagName) {
+            return el;
+        }
+    }
+    return null;
+}
+
+function deleteR(el) {
+    var row = upTo(el, 'tr')
+    if (row) {
+        row.parentNode.removeChild(row);
+    }
 }

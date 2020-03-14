@@ -76,6 +76,7 @@ function food() {
     console.log(prices);
 
     var handler = function (index) {
+      document.getElementById('panel-footer').style.display = 'none';
       modal[0].style.display = 'block';
 
       foodDisplay.innerHTML = names[index];
@@ -107,6 +108,8 @@ function modalReset() {
   modal[0].style.display = 'none';
   document.getElementById("food-instructions").value = "";
   document.getElementById('quantity').innerHTML = 0;
+  document.getElementById('add-button').disabled = true;
+  document.getElementById('panel-footer').style.display = 'block'; // showing footer after closing modal
   counter = 0;
   num2 = 0;
 }

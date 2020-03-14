@@ -145,8 +145,6 @@ def food_database():
 
         cur.execute("INSERT INTO foodorder(username, quantity, foodName, price, instructions) VALUES(%s, %s, %s, %s, %s)",
                     ([session.get('username')], quantity, foodName, price, instructions))
-
-        #cur.execute("INSERT INTO foodorder(subtotal) VALUES(%s)", (subtotal))
         
         my_mysql.connection.commit()
         cur.close()
@@ -240,6 +238,19 @@ def drop_session():
     session['logged_in'] = False
     return redirect(url_for('loginPage'))
 
-@app.route('/visual_change', methods=['GET'])
+@app.route('/visual_change', methods=['POST', 'GET'])
 def visual_change():
-    return 'nothing'
+    if request.method == 'GET':
+        return 'nothing'
+    elif request.method == 'POST':
+        req_data = request.get_json()
+        #print(type(req_data), file=sys.stderr)
+
+        #id= req_data['rowID']
+        #print("ROW ID: " , id, file=sys.stderr)
+        cur = my_mysql.connection.cursor()
+
+        cur.execute("DELETE FROM foodorder WHERE id=%s", [req_data])
+        my_mysql.connection.commit()
+        cur.close()
+        return "THE ROW"

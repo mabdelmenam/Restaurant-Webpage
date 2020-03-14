@@ -29,17 +29,19 @@
         <h4 id="dropdown-title">Your Order</h4>
         <table id="dropdown-table">
           {% for col in data %}
+          <!-- WILL NEED TO DELETE THE CURRENT ROW AND THE ROW UNDER IT BECCAUSE OF THE ROW WITH ALL THE id="no-line"-->
           <tr>
-            <td>{{col.1}}</td>
-            <td style="color:darkcyan">{{col.2}}</td>
-            <td>X</td>
-            <td>{{col.3}}</td>
+            <td>{{col.2}}</td>
+            <td style="color:darkcyan">{{col.3}}</td>
+            <td onclick="deleteFood(this, {{col.0}})"><i class="fa fa-trash" aria-hidden="true"></i>
+            </td>
+            <td id="single-price-{{col.0}}">{{col.4}}</td>
           </tr>
           <tr>
-            <td id='no-line' colspan='4'>{{col.4}}</td>
-            <td id='no-line'></td> <!-- required to make line seperations between rows-->
-            <td id='no-line'></td>
-            <td id='no-line'></td>
+            <td class='no-line' id="{{col.0}}" colspan='4' onclick="deleteFood(this, null)">{{col.5}}</td>
+            <td class='no-line'></td> <!-- required to make line seperations between rows-->
+            <td class='no-line'></td>
+            <td class='no-line'></td>
           </tr>
           {% endfor %}
         </table>
@@ -96,7 +98,7 @@
         <button id="quantity-plus" onclick=foodQuantity(id)>
           <i class="fa fa-plus"></i>
         </button>
-        <button id="add-button">Add</button>
+        <button id="add-button" disabled>Add</button>
         <p id="final-price" style="display:inline-block;"></p>
       </div>
     </div>
@@ -139,6 +141,29 @@
     </div>
 
   </div>
+  <footer id="panel-footer">
+    <div class="container">
+      <section id="hours" style="float:left;">
+        <h3 style="margin-bottom: -10px;">Hours:</h3><br>
+        Sunday-Thursday: 11:00am - 10:00pm<br>
+        Friday: 11:00am - 1:30am<br>
+        Saturday: 11:00am - 3:00am<br>
+      </section>
+      <section id="address" style="float:left; margin-left: 110px;">
+        <h3 style="margin-bottom: -10px;">Address:</h3><br>
+        989 McGrub Ave, 09909<br>
+        San Jose, Pennsylvania<br>
+      </section>
+      <section id="contact" style="float:left; margin-left: 110px;">
+        <h3 style="margin-bottom: -10px;">Contact Us:</h3><br>
+        201-321-9876<br>
+        mabdelmenam511@gmail.com<br>
+      </section>
+
+    </div>
+    <br><br><br><br>
+    <div style="font-size:15px; text-align:center;">&copy; Copyright Mohamed Abdelmenam McGrub 2020</div>
+  </footer>
 </body>
 
 </html>
