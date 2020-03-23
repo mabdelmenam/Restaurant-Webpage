@@ -103,3 +103,9 @@ footer{
     position: relative;
     left: 570px;
 }
+#hamburgers{
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  display: block;
+}

@@ -34,7 +34,8 @@ def test():
         pnumber = row[4]
         receiver_email = row[5]
 
-    message["To"] = receiver_email
+    recipients = [receiver_email, sender_email]
+    message["To"] = ", ".join(recipients)
 
     cur.execute("SELECT * FROM foodorder WHERE username=%s", [session.get('username')])
     food = cur.fetchall()
@@ -84,4 +85,4 @@ def test():
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
         server.login(sender_email, password)
-        server.sendmail(sender_email, receiver_email, message.as_string())
+        server.sendmail(sender_email, recipients, message.as_string())
