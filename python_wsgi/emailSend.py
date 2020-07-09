@@ -13,7 +13,7 @@ def test():
     port = 465 # For SSL
     smtp_server = "smtp.gmail.com"
     sender_email = "mabdelmenam511@gmail.com"
-    password = 'V%>h8$U4?4B{.cB9PzR"tDA8Zs<#V+E9~:{jS[[C'
+    password = 'c}Rqj7X[aZ).mw6:Um\W~!xD.9!/GczTS.`Zd2=*'
 
     message = MIMEMultipart('alternative')
     message["From"] = sender_email
